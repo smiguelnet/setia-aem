@@ -750,7 +750,7 @@ $z-index-tooltip: 3000;
 
 ## Design Tokens Export
 
-For use in SCSS:
+The `$dt-*` aliases below are a flat export layer for tooling that consumes design tokens outside SCSS (e.g., Style Dictionary, JSON exports for native apps). **Component SCSS uses the semantic names defined above** (`$color-primary-dark-blue`, `$spacing-md`, etc.) — see [06 → Variables](./06-frontend-tech-details.md#variables). Keep the two layers in sync; the `$dt-*` names should never be referenced directly from component styles.
 
 ```scss
 // _design-tokens.scss

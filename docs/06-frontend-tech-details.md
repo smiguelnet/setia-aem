@@ -194,17 +194,18 @@ ui.apps/src/main/content/jcr_root/apps/setia/clientlibs/
 
 **File:** `site/_variables.scss`
 
-```scss
-// TODO SECTION: Define exact brand colors from design system
+> Variable names below are the canonical SCSS tokens. They mirror the design system in [07 → Brand Colors](./07-design-system.md#brand-colors). The `$dt-*` aliases in doc 07 are a separate design-tokens export layer for non-SCSS consumers — **do not use `$dt-*` in component styles**; use the names below.
 
-// Colors
-$color-primary: #10245a;        // Dark blue
-$color-secondary: #7ED321;      // Green
-$color-accent: #FF6B6B;         // Red (if needed)
-$color-text: #333333;           // Dark gray
-$color-text-light: #666666;     // Medium gray
-$color-background: #FFFFFF;     // White
-$color-background-alt: #F5F5F5; // Light gray
+```scss
+// Colors — see 07-design-system.md for usage rules and contrast notes
+$color-primary-dark-blue: #10245a;   // Headers, footers, hero/banner backgrounds
+$color-primary-green: #7ED321;       // Cards, CTAs, accents
+$color-primary-light-blue: #4A90E2;  // Links, secondary accents
+$color-text: #333333;                // Body copy
+$color-text-secondary: #666666;      // Captions, muted text
+$color-background: #FFFFFF;          // Page background
+$color-background-alt: #F5F5F5;      // Alternate sections
+$color-border: #E0E0E0;              // Borders, dividers
 
 // Typography
 $font-family-base: 'Helvetica Neue', Arial, sans-serif;
@@ -244,8 +245,10 @@ $z-index-header: 1000;
 $z-index-modal: 2000;
 $z-index-dropdown: 1500;
 
-// Transitions
-$transition-speed: 0.3s;
+// Transitions — see 07-design-system.md for usage guidance
+$transition-fast: 0.15s;
+$transition-normal: 0.3s;
+$transition-slow: 0.5s;
 $transition-easing: ease-in-out;
 ```
 
@@ -297,9 +300,9 @@ $transition-easing: ease-in-out;
   outline: inherit;
 }
 
-// Transition
+// Transition — defaults to $transition-normal; pass a different speed for fast/slow variants
 @mixin transition($properties...) {
-  transition: $properties $transition-speed $transition-easing;
+  transition: $properties $transition-normal $transition-easing;
 }
 
 // Visually hidden (accessible but not visible)
@@ -359,7 +362,7 @@ $transition-easing: ease-in-out;
 }
 
 .card {
-  background-color: $color-secondary;
+  background-color: $color-primary-green;
   border-radius: 8px;
   padding: $spacing-lg;
   color: #ffffff;

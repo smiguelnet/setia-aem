@@ -257,7 +257,7 @@ Rich Text: "Founded in 2005, Setia has been a pioneer and successful company wor
 **Used On:** All pages
 
 **Fields:**
-- **Columns** - 2, 3, 4, or 6 (default: 3)
+- **Columns** - 2, 3, or 4 (default: 3)
 - **Gap Size** - Small, Medium, Large (default: Medium)
 
 **Card Items (multifield):**
@@ -274,7 +274,7 @@ For each card:
 - Keep all card descriptions similar length
 - Use consistent icon style (all line icons or all filled)
 - Provide link URLs for actionable cards
-- Default green background is brand color (#7ED321)
+- Default theme is **Green** (brand color #7ED321); switch via the Styles toolbar (Theme group: Green / Dark Blue / Neutral)
 
 **Common Use Cases:**
 - Service offerings (6 cards, 3 columns)
@@ -453,8 +453,11 @@ Logo 2:
 - **Subtitle** - Supporting text
 - **Button Text** - Action button label (default: "Get in touch")
 - **Button Link** - Where button goes (contact page, form, etc.)
-- **Background Color** - Custom color (default: brand blue)
 - **Include Mascot** (checkbox) - Show mascot character (default: true)
+- **Mascot Image** - Browse DAM (shown when Include Mascot = true)
+- **Mascot Alt Text** - Accessibility description (shown when Include Mascot = true)
+
+**Theme:** Background color is set via the Styles toolbar (Theme group: Light / Dark / Accent), not as a per-instance color picker. Default is Light.
 
 **Best Practices:**
 - Keep title action-oriented and concise
@@ -469,6 +472,8 @@ Subtitle: "Let us help you build your next great digital product"
 Button Text: "Get in touch"
 Button Link: /content/setia/us/en/contact
 Include Mascot: true
+Mascot Image: /content/dam/setia/images/mascot.png
+Mascot Alt Text: "Setia mascot character with laptop"
 ```
 
 ---

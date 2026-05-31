@@ -18,7 +18,7 @@ This document provides detailed specifications for all AEM components used in th
 | `xf-header-reference` | Reference | Low | All | No | Fragment path | — | — | — |
 | `xf-footer-reference` | Reference | Low | All | No | Fragment path | — | — | — |
 | `home-hero` | Hero | High | Home | Optional | 8+ fields | Optional | **Yes** (image drop) | No |
-| `page-banner` | Banner | Low | Company, Services, Solutions | Optional | 3 fields | Optional (theme) | **Yes** (image drop) | No |
+| `page-banner` | Banner | Low | Company, Services, Solutions | No | 3 fields | **Yes** (theme) | **Yes** (image drop) | No |
 | `section-heading` | Layout | Low | All | No | 2 fields | — | Optional | No |
 | `rich-text-section` | Content | Low | All | No | 2-3 fields | — | Optional (inline) | No |
 | `card-grid` | Container | Medium | All | Optional | Multifield | **Yes** (cols/theme) | **Yes** (refresh) | **Yes** |
@@ -288,7 +288,7 @@ page-banner/
 
 #### HTL Template
 ```html
-<section class="page-banner" style="background-image: url(${properties.backgroundImage})">
+<section class="page-banner ${currentStyle.cssClasses}" style="background-image: url(${properties.backgroundImage})">
     <div class="container">
         <h1 class="banner-title">${properties.title}</h1>
         <p class="banner-subtitle" data-sly-test="${properties.subtitle}">
@@ -409,7 +409,7 @@ card-grid/
 #### Dialog Fields
 
 **Tab 1: Layout**
-- Columns (dropdown: 2, 3, 4, 6, default: 3)
+- Columns (dropdown: 2, 3, 4, default: 3)
 - Gap Size (dropdown: small, medium, large, default: medium)
 
 **Tab 2: Cards (multifield)**
@@ -419,7 +419,8 @@ card-grid/
   - Description (textarea)
   - Link URL (pathfield, optional)
   - Link Text (textfield, default: "Learn More")
-  - Background Color (colorpicker, optional)
+
+> Per-card colors are intentionally absent — theme is set component-wide via the Style System (see [Style System Theme Variants](#style-system-theme-variants)). Per-instance color pickers would defeat the policy-driven theming rule in [03 → Best Practices for Templates & Policies](./03-aem-implementation-strategy.md#best-practices-for-templates--policies).
 
 #### Component Definition (.content.xml)
 ```xml
@@ -481,9 +482,9 @@ public class CardGridModel {
 ```html
 <sly data-sly-use.model="br.com.setia.core.models.CardGridModel"/>
 
-<div class="card-grid ${model.gridClass}">
+<div class="card-grid ${currentStyle.cssClasses} ${model.gridClass}">
     <sly data-sly-list.card="${model.cards}">
-        <div class="card" style="background-color: ${card.backgroundColor}">
+        <div class="card">
             <img src="${card.icon}" alt="${card.title}" class="card-icon"/>
             <h3 class="card-title">${card.title}</h3>
             <p class="card-description">${card.description}</p>
@@ -707,10 +708,10 @@ logo-gallery/
 #### Dialog Fields
 - Title (textfield, optional)
 - Logo Items (multifield):
-  - Logo Image (pathfield to DAM, required)
-  - Alt Text (textfield, required)
-  - Link URL (pathfield, optional)
-  - Logo Width (textfield, e.g., "120px", optional)
+  - Logo Image (pathfield to DAM, required) — `./imagePath` *(named to match the reserved-name rule from `image-section`)*
+  - Alt Text (textfield, required) — `./altText`
+  - Link URL (pathfield, optional) — `./linkUrl`
+  - Logo Width (textfield, e.g., "120px", optional) — `./width`
 
 #### HTL Template
 ```html
@@ -719,17 +720,17 @@ logo-gallery/
     <div class="logo-grid">
         <sly data-sly-list.logo="${properties.logos}">
             <div class="logo-item">
-                <a href="${logo.linkUrl}" 
+                <a href="${logo.linkUrl}"
                    data-sly-test="${logo.linkUrl}"
-                   target="_blank" 
+                   target="_blank"
                    rel="noopener">
-                    <img src="${logo.image}" 
-                         alt="${logo.altText}" 
+                    <img src="${logo.imagePath}"
+                         alt="${logo.altText}"
                          style="width: ${logo.width}"/>
                 </a>
-                <img data-sly-test="${!logo.linkUrl}" 
-                     src="${logo.image}" 
-                     alt="${logo.altText}" 
+                <img data-sly-test="${!logo.linkUrl}"
+                     src="${logo.imagePath}"
+                     alt="${logo.altText}"
                      style="width: ${logo.width}"/>
             </div>
         </sly>
@@ -764,12 +765,15 @@ cta-section/
 - Subtitle (textfield)
 - Button Text (textfield, default: "Get in touch")
 - Button Link (pathfield)
-- Background Color (colorpicker, default: blue)
 - Include Mascot (checkbox, default: true)
+- Mascot Image (pathfield to DAM, shown when Include Mascot = true)
+- Mascot Alt Text (textfield, shown when Include Mascot = true)
+
+> Background color is theme-driven, not authored per-instance — switch via the Styles toolbar (Theme group: Light / Dark / Accent). See [Style System Theme Variants](#style-system-theme-variants).
 
 #### HTL Template
 ```html
-<section class="cta-section" style="background-color: ${properties.backgroundColor}">
+<section class="cta-section ${currentStyle.cssClasses}">
     <div class="container">
         <div class="cta-content">
             <h2 class="cta-title">${properties.title}</h2>
@@ -782,8 +786,8 @@ cta-section/
                 ${properties.buttonText}
             </a>
         </div>
-        <div class="cta-mascot" data-sly-test="${properties.includeMascot}">
-            <img src="/content/dam/setia/mascot.png" alt="Setia Mascot"/>
+        <div class="cta-mascot" data-sly-test="${properties.includeMascot && properties.mascotImage}">
+            <img src="${properties.mascotImage}" alt="${properties.mascotAlt}"/>
         </div>
     </div>
 </section>
