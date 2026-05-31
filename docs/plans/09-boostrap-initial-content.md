@@ -120,6 +120,37 @@ After deployment, the site must not show only empty editable areas. It should re
 - [ ] Solutions `digital-assets.jpg` platform diagram + 6 feature cards render
 - [ ] No archetype-default leftovers (Hello World, Epic Journey teasers, San Jose footer)
 
+## Bootstrap Acceptance Criteria
+
+The bootstrap is **done** only when **all** of these pass:
+
+- [ ] Pages **visually resemble** the reference screenshots (`docs/images/website_*.png`)
+- [ ] **No page contains an empty responsive grid** — every editable container has realistic content (see [05 → R14](./05-technical-risks.md))
+- [ ] **Navigation works** — header links resolve to Company / Services / Solutions; logo → home root
+- [ ] **Header and Footer render** on every page (both XFs wired and published)
+- [ ] **Responsive behavior works** at every profile in [07 → Responsive Validation Checklist](./07-responsive-strategy.md#responsive-validation-checklist)
+- [ ] **DAM assets resolve correctly** (no broken images; PDFs download)
+- [ ] **Lighthouse mobile score > 85** on each page
+
+## Export Requirements
+
+All authored output is part of the deliverable and must be exported to source control:
+
+- [ ] **`ui.content`** — authored pages under `/content/setia/...`
+- [ ] **`filter.xml`** — `ui.content/src/main/content/META-INF/vault/filter.xml` covers every exported path (pages, XFs, DAM, conf) with the correct mode (see [01 §6.5](./01-implementation-plan.md#65-vault-filter-modes-uicontentfilterxml))
+- [ ] **DAM assets** — binaries under `/content/dam/setia/...`
+- [ ] **Experience Fragments** — `/content/experience-fragments/setia/us/en/site/{header,footer}`
+- [ ] **Templates** — `/conf/setia/...` **if** template/policy changes were made during bootstrap
+
+> Verify reproducibility: a fresh clone + `mvn clean install -PautoInstallSinglePackage,aem-remote` must recreate the full authored site on a clean instance.
+
+## Visual Validation
+
+- **Screenshot comparison process** — capture each page (Home / Company / Services / Solutions) and diff against `docs/images/website_*.png`; flag layout, color, and spacing deviations.
+- **Author vs Publish validation** — confirm each page renders identically in Author preview and on Publish (catches unpublished XFs/assets).
+- **Responsive validation** — re-run the [07 checklist](./07-responsive-strategy.md#responsive-validation-checklist) at all device profiles.
+- **Spacing / typography verification** — section padding uses the 8px scale; headings follow the responsive type scale; no clipped or overflowing text.
+
 ## Related Documentation
 
 - [01 — Implementation Plan](./01-implementation-plan.md) (Phase 7 page creation; §6.5 filter modes)

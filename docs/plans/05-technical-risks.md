@@ -331,6 +331,48 @@ Low      🟢       🟢        🟡
 
 ---
 
+## Critical Risks Added in Implementation Review (🔴)
+
+> These two risks materialized during implementation review and are the **top execution risks** for an AI agent. They carry their own IDs (R14, R15) to avoid collision with the existing R9/R10.
+
+### R14: Empty AEM Rendering Risk
+**Risk:** Templates render empty responsive grids instead of realistic pages — i.e. the skeleton deploys but no content is authored, so pages show "Drag components here."
+**Impact:** HIGH — the deliverable looks broken/incomplete; visual validation is meaningless against empty containers.
+**Probability:** HIGH — the default state of a freshly deployed template is empty; it stays empty unless content is explicitly bootstrapped.
+**Timeline Impact:** +2-4 days if discovered late
+
+**Mitigation Strategies:**
+- ✅ Bootstrap initial content **early**, immediately after templates are wired (see [03 → Bootstrap Initial Authored Content](./03-recommended-build-order.md) and [09](./09-boostrap-initial-content.md))
+- ✅ Export authored pages into source control (`ui.content`) so the realistic version is reproducible
+- ✅ Validate **all** templates with realistic content, never empty containers
+- ✅ Treat "empty responsive grid" as **invalid output** in every acceptance gate
+
+**Contingency Plan:**
+- Create content-seeding scripts (or a vlt/package) that author the pages deterministically
+- Ship an initial authored package inside `ui.content` so a clean deploy is never empty
+
+**Monitoring:**
+- After every deploy, confirm each page renders header, footer, and at least the hero/banner + one content section
+
+---
+
+### R15: Template/XF Wiring Drift
+**Risk:** Header/Footer Experience Fragments are not wired consistently across both templates (e.g. footer present on Content Page but missing on Landing Page), so some pages render without global chrome.
+**Impact:** HIGH — inconsistent navigation/branding; hard to spot because one template looks fine.
+**Probability:** MEDIUM-HIGH — two templates × two XFs = four wirings that drift easily during refactors.
+**Timeline Impact:** +1-2 days
+
+**Mitigation Strategies:**
+- ✅ Run the [Mandatory Template Wiring Validation](./01-implementation-plan.md#mandatory-template-wiring-validation) checklist after **every** deployment
+- ✅ Validate template structure (header + footer present in both) after each change
+- ✅ Add screenshot-comparison tests (author + publish) that would catch a missing footer
+- ✅ Use the single generic `setia/components/experiencefragment` component everywhere (no deprecated `xf-*-reference`)
+
+**Contingency Plan:**
+- Keep both templates' `structure/.content.xml` under review in PRs; diff them for symmetric XF nodes
+
+---
+
 ## Risk Summary Table
 
 | ID | Risk | Impact | Prob | Score | Status | Owner |
@@ -348,6 +390,8 @@ Low      🟢       🟢        🟡
 | R11 | ClientLib conflicts | LOW | LOW | 🟢 1 | Accept | AEM Dev |
 | R12 | Template policies | LOW | LOW | 🟢 1 | Accept | AEM Dev |
 | R13 | Authoring errors | LOW | LOW | 🟢 1 | Accept | Content Author |
+| R14 | Empty AEM rendering | HIGH | HIGH | 🔴 9 | Monitor | AEM Dev |
+| R15 | Template/XF wiring drift | HIGH | MED | 🟠 6 | Plan | AEM Dev |
 
 **Risk Score:** Impact (1-3) × Probability (1-3) = 1-9
 

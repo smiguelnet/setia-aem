@@ -47,6 +47,25 @@ The assets are delivered in `docs/assets/`. The table maps each source file to i
 
 ---
 
+## Mandatory Initial Assets
+
+These assets **must** be uploaded before content bootstrap (Phase 7 / doc 09). Without them, components render with broken images and bootstrap is incomplete. All exist under `docs/assets/`.
+
+| Category | Required for bootstrap | Source file(s) |
+|----------|------------------------|----------------|
+| **Hero background** | home-hero | `images/bg-home.jpg` |
+| **Banner background** | page-banner (inner pages) | `images/bg-content.jpg` |
+| **Logos (brand)** | Header XF | `images/logo_white.png` |
+| **Service icons** | home-hero, card-grid | `images/blockchain-icon.jpg` (+ source remaining icons) |
+| **Partner logos** | logo-gallery | `images/partners/parceria_{aws,neo,ibm,its}.png` (Microsoft optional) |
+| **Diagrams** | image-section | `images/strategy.jpg` (Services), `images/digital-assets.jpg` (Solutions) |
+| **Footer mascot** | Footer XF | `images/contact_area.png` |
+| **CTA assets** | cta-section | `images/contact_area.png` (mascot) |
+
+> Full source→DAM→component mapping is in [Source Assets → DAM Mapping](#source-assets--dam-mapping) above. Documents (PDFs) for the download-list are listed there too.
+
+---
+
 ## DAM Folder Structure
 
 ### Target Hierarchy (populated from `docs/assets/`)
@@ -567,6 +586,14 @@ setia-logo-2026.svg
 ---
 
 ## DAM Governance
+
+### Governance Rules
+
+- **SVG preferred** for logos and icons (scalable, tiny). Delivered partner logos are PNG with transparent backgrounds — keep as-is until a vector source exists.
+- **WebP preferred** for large raster images (hero/banner/content), with a JPEG fallback.
+- **All assets require alt-text metadata** before they may be referenced on a published page (accessibility).
+- **File-size validation before upload** — hero/banner < 500 KB, content images < 300 KB, icons < 10 KB, documents < 10 MB. Compress before uploading.
+- **Naming-convention enforcement** — new assets follow the conventions in [Asset Naming Conventions](#asset-naming-conventions); delivered files keep their original names so references stay stable.
 
 ### Asset Lifecycle
 

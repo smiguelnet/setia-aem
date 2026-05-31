@@ -717,6 +717,39 @@ img {
 
 ---
 
+## Responsive Validation Checklist
+
+Validate **every page** at these device profiles:
+
+- [ ] iPhone SE (375 × 667)
+- [ ] iPhone 14 (390 × 844)
+- [ ] iPad (768 × 1024)
+- [ ] 1024 desktop / small laptop
+- [ ] 1440 desktop
+- [ ] Ultra-wide desktop (≥ 1920)
+
+At each profile, validate these elements render and behave correctly:
+
+- [ ] **Menu** (hamburger ↔ horizontal nav transition; open/close)
+- [ ] **Hero** (title scaling, service-card stacking/overlap)
+- [ ] **Card grids** (column reflow 1 → 2 → 3/4)
+- [ ] **Accordion** (touch targets, expand/collapse)
+- [ ] **CTA** (button + mascot layout)
+- [ ] **Footer** (XF rendering, contact + mascot)
+- [ ] **XF rendering** (header + footer present on every page)
+- [ ] **Image scaling** (no overflow, correct aspect ratio)
+- [ ] **Typography wrapping** (no clipped/overflowing headings)
+
+### Component Requirements
+
+**All components must support:**
+- **Mobile-first layout** (base styles target small screens; enhance upward)
+- **Touch interactions** (≥ 44px touch targets; no hover-only affordances)
+- **Keyboard accessibility** (focusable, operable controls; logical tab order)
+- **Reduced-motion preference** (`@media (prefers-reduced-motion: reduce)` honored)
+
+---
+
 ## Testing Strategy
 
 ### Manual Testing Checklist

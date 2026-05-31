@@ -42,6 +42,22 @@ DEVELOPERS own:                    AUTHORS own:
 
 ---
 
+## Initial Content Strategy
+
+Authors must **not** start from empty pages. The site ships with a realistic initial authored version (see [09 — Bootstrap Initial Content](./09-boostrap-initial-content.md)), and every template is designed to feel production-ready the moment a page is created from it.
+
+**Every initial page must already contain:**
+- Hero (Landing Page) or page **banner** (Content Page)
+- **Section headings** introducing each major section
+- **Card grids** with real service/feature content
+- **CTA section** ("Ready to tackle your next challenge?")
+- **Footer** (via the Footer Experience Fragment)
+- **Navigation** (via the Header Experience Fragment)
+
+**Principle:** templates should feel production-ready immediately after page creation. An empty responsive grid is considered invalid output (see [05 → R14](./05-technical-risks.md)). Authors then *refine* existing content rather than building a page from nothing.
+
+---
+
 ## Template Strategy for Authors
 
 ### When to Use Each Template
@@ -644,6 +660,33 @@ Examples:
 - Troubleshooting common issues
 
 **Hands-on:** Update header navigation, schedule publish
+
+---
+
+## Authoring Governance
+
+Defines what authors can and cannot touch, so the locked structural frame stays intact while content stays editable.
+
+### Locked in template structure (cannot be moved/deleted on pages)
+- Header Experience Fragment reference
+- Footer Experience Fragment reference
+- Home Hero (Landing Page) — content editable, position locked
+- Page Banner (Content Page) — content editable, position locked
+- CTA Section — content editable, position locked
+
+### Editable by authors (in the content container, per policy)
+- section-heading, rich-text-section, card-grid, image-section, accordion-section, download-list, logo-gallery, cta-section (the exact allow-list depends on the template — see [01 §6.2/§6.3](./01-implementation-plan.md))
+
+### Globally managed Experience Fragments
+- **Header** and **Footer** are edited **only** in the Experience Fragments console (`/content/experience-fragments/setia/us/en/site/{header,footer}`), never on individual pages. A change there propagates to all pages.
+
+### Who can edit what
+| Asset | Content Author | Content Admin | Developer |
+|-------|:--------------:|:-------------:|:---------:|
+| Pages (content) | ✅ | ✅ | ✅ |
+| Experience Fragments | ❌ | ✅ | ✅ |
+| DAM assets | ✅ (upload) | ✅ | ✅ |
+| Templates & policies | ❌ | ❌ | ✅ |
 
 ---
 

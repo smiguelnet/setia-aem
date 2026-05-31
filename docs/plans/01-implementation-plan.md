@@ -17,6 +17,28 @@ This document outlines the complete implementation plan for the Setia corporate 
 
 ---
 
+## Documentation Consistency Rules
+
+These rules are **canonical** and override any conflicting statement elsewhere in the docs. They exist so an AI agent can implement without ambiguity.
+
+**Experience Fragment component**
+- The canonical Experience Fragment reference component is **`/apps/setia/components/experiencefragment`** (super-type `core/wcm/components/experiencefragment/v2/experiencefragment`, group `Setia - Content`).
+- The separate components **`xf-header-reference`** and **`xf-footer-reference`** are **deprecated** — do not create or reference them. Any older doc text that mentions them is superseded by this rule.
+- All templates reference an Experience Fragment by setting **`fragmentVariationPath`** on a `setia/components/experiencefragment` instance — one instance per XF, parameterized per template.
+
+**Canonical XF variation paths**
+```text
+/content/experience-fragments/setia/us/en/site/header/master
+/content/experience-fragments/setia/us/en/site/footer/master
+```
+
+**Canonical page/component paths**
+- Base page component: `/apps/setia/components/page` (folder `page`, title `Setia Page`).
+- Home page = the locale root `/content/setia/us/en` (there is **no** `/content/setia/us/en/home` node).
+- All custom components live under `/apps/setia/components/<name>` in component group `Setia` (content components) or `Setia - Content` (structural/proxy components).
+
+---
+
 ## Phase 1: Foundation Setup (Week 1)
 
 ### Objectives
@@ -107,6 +129,21 @@ This document outlines the complete implementation plan for the Setia corporate 
 - Establish global navigation structure
 - Set up Experience Fragment references
 
+### Mandatory Template Wiring Validation
+
+The single most common failure mode (see [05 → R10](./05-technical-risks.md)) is Header/Footer XFs not wired into every template. This checklist **must pass** before Phase 2 is considered complete:
+
+- [ ] Header XF wired into **Landing Page** template structure (`fragmentVariationPath` = header master)
+- [ ] Header XF wired into **Content Page** template structure
+- [ ] Footer XF wired into **Landing Page** template structure (`fragmentVariationPath` = footer master)
+- [ ] Footer XF wired into **Content Page** template structure
+- [ ] Navigation root configured correctly (`navigationRoot=/content/setia/us/en`, `structureDepth=1`)
+- [ ] XF rendering validated in **Author** (edit + preview modes)
+- [ ] XF rendering validated on **Publish**
+- [ ] Experience Fragments **published** correctly (header + footer master variations)
+
+> Both XF references use the generic `setia/components/experiencefragment` component per the [Documentation Consistency Rules](#documentation-consistency-rules) — never the deprecated `xf-*-reference` components.
+
 ### Tasks
 
 #### 2.1 Header Experience Fragment
@@ -176,7 +213,7 @@ This document outlines the complete implementation plan for the Setia corporate 
 **Duration:** 1 day
 **Owner:** AEM Developer
 
-> **Design correction:** the plan originally specified separate `xf-header-reference` and `xf-footer-reference` components. The source uses a single generic `setia/components/experiencefragment` parameterized via `fragmentVariationPath` per instance — this matches Adobe's official Core Components pattern and avoids duplicate component definitions. Other docs that still reference `xf-header-reference` / `xf-footer-reference` (docs 02, 03, 04) should be reconciled to the generic-component pattern in a follow-up sweep.
+> **Design correction:** the plan originally specified separate `xf-header-reference` and `xf-footer-reference` components. The source uses a single generic `setia/components/experiencefragment` parameterized via `fragmentVariationPath` per instance — this matches Adobe's official Core Components pattern and avoids duplicate component definitions. This is now the canonical rule (see [Documentation Consistency Rules](#documentation-consistency-rules)); plan docs 02 and 03 have been reconciled. The spec doc `04-component-specification.md` (outside `plans/`) still lists the deprecated pair and should be reconciled there separately.
 
 - [x] Create `setia/components/experiencefragment` component (super-type `core/wcm/components/experiencefragment/v2/experiencefragment`, group `Setia - Content`, `cq:styleElements="[div,section,article,main,aside,header,footer]"`)
 - [x] Ship `_cq_editConfig.xml` with `cq:inherit="{Boolean}true"` so the parent edit config (drop targets, listeners) applies
@@ -1095,6 +1132,25 @@ See [Technical Risks](./05-technical-risks.md) for detailed risk analysis.
 5. **Schedule regular check-ins** (daily standups, weekly reviews)
 6. **Track progress** against this plan
 7. **Adjust as needed** based on learnings
+
+---
+
+## AI Agent Execution Notes
+
+Guidance for an AI agent (or any implementer) executing this plan end-to-end:
+
+- **Bootstrap content must happen BEFORE visual validation.** Never screenshot or sign off a page that has only structure-locked components and empty editable areas.
+- **Empty responsive grids are invalid output.** A template that renders an empty parsys ("Drag components here") is not "done" — it must render a realistic initial version of the page (see [09 — Bootstrap Initial Content](./09-boostrap-initial-content.md) and [05 → R9](./05-technical-risks.md)).
+- **Every template must render a realistic initial version of the website** immediately after a page is created from it — hero/banner, headings, cards, CTA, header, footer.
+- **Every component must ship with the full set:**
+  - template/component **policies** (allowed components, style groups)
+  - **responsive behavior** (mobile-first, all breakpoints)
+  - **author dialog** (`_cq_dialog`)
+  - **edit config** (`_cq_editConfig` — drop targets / refresh listeners where applicable)
+  - **placeholder handling** (graceful render when properties are empty; AEM edit-mode placeholder)
+  - **accessibility attributes** (semantic headings, `alt`, `aria-*`, keyboard support)
+- **Authored content is part of the deliverable** — it is exported to `ui.content` and version-controlled, not left only in a running instance.
+- **Implement incrementally and verify after each phase** with `mvn clean install` (and `-PautoInstallSinglePackage,aem-remote` against a running instance where available).
 
 ---
 

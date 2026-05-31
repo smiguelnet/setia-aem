@@ -44,48 +44,41 @@ This document visualizes the dependencies between components, templates, and Exp
 │                    (Depends on: Foundation)                          │
 └─────────────────────────────────────────────────────────────────────┘
 
-■ Header Experience Fragment
+◆ setia/components/experiencefragment  (generic XF reference component)
+   Dependencies:
+   └─→ Design System (none structural — it's a Core Components proxy)
+
+   Note:
+   └─→ One generic component, parameterized per instance via fragmentVariationPath.
+       Replaces the deprecated xf-header-reference / xf-footer-reference pair.
+
+
+■ Header Experience Fragment instance
    Dependencies:
    ├─→ Design System (for styling)
    ├─→ Navigation component (or placeholder)
+   ├─→ setia/components/experiencefragment (the reference component)
    └─→ Logo image in DAM
 
    Blocks:
-   ├─→ xf-header-reference component
-   └─→ All templates
+   └─→ All templates (wired via fragmentVariationPath in structure)
 
    Files:
-   └─→ /content/experience-fragments/setia/header/master
+   └─→ /content/experience-fragments/setia/us/en/site/header/master
 
 
-■ Footer Experience Fragment
+■ Footer Experience Fragment instance
    Dependencies:
    ├─→ Design System (for styling)
    ├─→ Contact content
+   ├─→ setia/components/experiencefragment (the reference component)
    └─→ Mascot image in DAM
 
    Blocks:
-   ├─→ xf-footer-reference component
-   └─→ All templates
+   └─→ All templates (wired via fragmentVariationPath in structure)
 
    Files:
-   └─→ /content/experience-fragments/setia/footer/master
-
-
-● xf-header-reference
-   Dependencies:
-   └─→ Header Experience Fragment (must exist first)
-
-   Blocks:
-   └─→ All templates (locked in structure)
-
-
-● xf-footer-reference
-   Dependencies:
-   └─→ Footer Experience Fragment (must exist first)
-
-   Blocks:
-   └─→ All templates (locked in structure)
+   └─→ /content/experience-fragments/setia/us/en/site/footer/master
 
 
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -251,8 +244,8 @@ This document visualizes the dependencies between components, templates, and Exp
 ■ Setia Landing Page Template
    Dependencies:
    ├─→ page (Setia Page)
-   ├─→ xf-header-reference
-   ├─→ xf-footer-reference
+   ├─→ setia/components/experiencefragment (Header XF instance, fragmentVariationPath)
+   ├─→ setia/components/experiencefragment (Footer XF instance, fragmentVariationPath)
    ├─→ home-hero ✱ CRITICAL
    ├─→ section-heading
    ├─→ rich-text-section
@@ -268,8 +261,8 @@ This document visualizes the dependencies between components, templates, and Exp
 ■ Setia Content Page Template
    Dependencies:
    ├─→ page (Setia Page)
-   ├─→ xf-header-reference
-   ├─→ xf-footer-reference
+   ├─→ setia/components/experiencefragment (Header XF instance, fragmentVariationPath)
+   ├─→ setia/components/experiencefragment (Footer XF instance, fragmentVariationPath)
    ├─→ page-banner ✱ CRITICAL
    ├─→ section-heading
    ├─→ rich-text-section
@@ -372,10 +365,11 @@ This document visualizes the dependencies between components, templates, and Exp
 These components block template or page creation and must be built first:
 
 1. **page (Setia Page)** → Blocks all templates
-2. **Header XF** → Blocks xf-header-reference → Blocks all templates
-3. **Footer XF** → Blocks xf-footer-reference → Blocks all templates
-4. **home-hero** → Blocks Landing Page Template → Blocks Home page
-5. **page-banner** → Blocks Content Page Template → Blocks 3 inner pages
+2. **setia/components/experiencefragment** → Blocks both XF instances → Blocks all templates
+3. **Header XF instance** → wired into all templates via `fragmentVariationPath`
+4. **Footer XF instance** → wired into all templates via `fragmentVariationPath`
+5. **home-hero** → Blocks Landing Page Template → Blocks Home page
+6. **page-banner** → Blocks Content Page Template → Blocks 3 inner pages
 
 ### Non-Critical Components
 These can be built in any order after the critical path:
@@ -435,10 +429,9 @@ Developer A:              Developer B:
 |-----------|-----------|--------|----------------|
 | **page (Setia Page)** | None | All templates | — |
 | **Design System** | None | All components (style) | — |
-| **Header XF** | Design System | xf-header-reference | Footer XF (parallel) |
-| **Footer XF** | Design System | xf-footer-reference | Header XF (parallel) |
-| **xf-header-reference** | Header XF | All templates | xf-footer-reference (parallel) |
-| **xf-footer-reference** | Footer XF | All templates | xf-header-reference (parallel) |
+| **setia/components/experiencefragment** | Design System | Both XF instances → all templates | — |
+| **Header XF instance** | Design System, experiencefragment | All templates (via fragmentVariationPath) | Footer XF (parallel) |
+| **Footer XF instance** | Design System, experiencefragment | All templates (via fragmentVariationPath) | Header XF (parallel) |
 | **page-banner** | Design System | Content Page Template | All simple components |
 | **section-heading** | Design System | — | All simple components |
 | **rich-text-section** | Design System | — | All simple components |
@@ -474,13 +467,12 @@ Developer A:              Developer B:
 
 ### Layer 2: Shared Elements (Depends on Layer 1)
 **Build Second:**
-4. Header Experience Fragment + styles
-5. Footer Experience Fragment + styles
-6. xf-header-reference component
-7. xf-footer-reference component
+4. `setia/components/experiencefragment` generic reference component
+5. Header Experience Fragment instance + styles
+6. Footer Experience Fragment instance + styles
 
 **Duration:** 3 days  
-**Parallel:** Header and Footer can be built in parallel
+**Parallel:** Header and Footer can be built in parallel (both reuse the one generic component)
 
 ### Layer 3: Simple Components (Depends on Layer 1)
 **Build Third:**
@@ -536,8 +528,8 @@ Developer A:              Developer B:
 
 **Landing Page Template is blocked by:**
 - ✗ page (Setia Page) (base)
-- ✗ xf-header-reference
-- ✗ xf-footer-reference
+- ✗ setia/components/experiencefragment (generic reference component)
+- ✗ Header XF instance + Footer XF instance (wired via fragmentVariationPath)
 - ✗ **home-hero** (CRITICAL - unique to this template)
 - ✓ section-heading (can add later)
 - ✓ rich-text-section (can add later)
@@ -546,8 +538,8 @@ Developer A:              Developer B:
 
 **Content Page Template is blocked by:**
 - ✗ page (Setia Page) (base)
-- ✗ xf-header-reference
-- ✗ xf-footer-reference
+- ✗ setia/components/experiencefragment (generic reference component)
+- ✗ Header XF instance + Footer XF instance (wired via fragmentVariationPath)
 - ✗ **page-banner** (CRITICAL - primary component)
 - ✓ All other components (can add to policy later)
 
@@ -562,6 +554,20 @@ Developer A:              Developer B:
 **Specific pages blocked by:**
 - Home page → needs home-hero functional
 - Inner pages → need page-banner functional
+
+---
+
+## Template Dependency Validation
+
+Before either template is considered complete, validate:
+
+- [ ] **Landing Page** template structure contains **both** a Header XF reference and a Footer XF reference (each a `setia/components/experiencefragment` instance with the correct `fragmentVariationPath`).
+- [ ] **Content Page** template structure contains **both** a Header XF reference and a Footer XF reference.
+- [ ] Both references use the generic `setia/components/experiencefragment` component — the deprecated `xf-header-reference` / `xf-footer-reference` components are **not** used.
+- [ ] All template structure nodes (structure / initial / policies) are **exportable to `ui.content`** and reproduce on a clean instance.
+- [ ] XF instances point at the canonical paths (`…/site/header/master`, `…/site/footer/master`).
+
+> See [01 → Mandatory Template Wiring Validation](./01-implementation-plan.md#mandatory-template-wiring-validation) for the full author/publish validation checklist.
 
 ---
 

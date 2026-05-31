@@ -187,32 +187,31 @@ ui.frontend/src/main/webpack/components/footer.scss
 
 ---
 
-#### Priority 2C: XF Reference Components (AEM Developer)
+#### Priority 2C: XF Reference Component (AEM Developer)
 **Duration:** 1 day
 
-**Day 5: Build Both References**
+**Day 5: Build the single generic XF reference component**
 
 ```
-1. xf-header-reference
-   Location: /apps/setia/components/xf-header-reference/
+setia/components/experiencefragment
+   Location: /apps/setia/components/experiencefragment/
    Files:
-   - .content.xml (super type: experiencefragment)
-   - _cq_dialog/.content.xml (fragment path field)
-
-2. xf-footer-reference
-   (same structure)
+   - .content.xml (super type: core/wcm/components/experiencefragment/v2/experiencefragment)
+   - _cq_editConfig.xml (cq:inherit="true")
 ```
+
+> One generic component is used for **both** header and footer. Each template instance sets its own `fragmentVariationPath`. The deprecated `xf-header-reference` / `xf-footer-reference` pair is **not** built (see [01 → Documentation Consistency Rules](./01-implementation-plan.md#documentation-consistency-rules)).
 
 **Build Steps:**
-1. Create component folders
-2. Set super type to core XF component
-3. Create dialog with fragment path field
-4. Set default fragment paths
-5. Test in page component
+1. Create the `experiencefragment` component folder
+2. Set super type to the Core Components XF v2 component
+3. Ship `_cq_editConfig.xml` with `cq:inherit="{Boolean}true"`
+4. Reference it from each template structure with the canonical `fragmentVariationPath`
+5. Test in a page from each template
 
 **Success Criteria:**
-- ✅ References load XF content
-- ✅ Changes to XF appear on pages
+- ✅ Reference loads XF content via `fragmentVariationPath`
+- ✅ Changes to the XF master variation appear on all pages
 - ✅ Can be locked in template structure
 
 ---
@@ -570,6 +569,21 @@ JS: ui.frontend/src/main/webpack/components/accordion-section.js
 
 ---
 
+### 🔹 Phase: Template Wiring and Structure Validation (precedes Templates Layer)
+
+Run this gate **before** building/enabling the templates below. It ensures the structural skeleton (locked frame + XF wiring + policies) is sound before any content goes in.
+
+1. **Validate editable template structure** — `structure/` defines the locked frame (root container, header, hero/banner, content parsys, CTA, footer); `initial/` defines starting content; `policies/` maps `cq:policy`.
+2. **Add XF references to template structure nodes** — one `setia/components/experiencefragment` instance for header and one for footer in **each** template's `structure/`, with the canonical `fragmentVariationPath` values. (Deprecated `xf-*-reference` components must not be used.)
+3. **Validate policies** — each container maps to a real policy node under `/conf/setia/settings/wcm/policies/...` (no dangling `cq:policy` references).
+4. **Validate allowed components** — the content-container policy lists exactly the components each template permits (see [01 §6.2 / §6.3](./01-implementation-plan.md)).
+5. **Export templates into `ui.content`** — the entire `/conf/setia` subtree (template-types + templates + policies) round-trips from source.
+6. **Validate Author rendering before content bootstrap** — create a throwaway page from each template and confirm header/footer render and the insert menu shows only allowed components.
+
+> Cross-check against [01 → Mandatory Template Wiring Validation](./01-implementation-plan.md#mandatory-template-wiring-validation) and [02 → Template Dependency Validation](./02-component-dependency-graph.md#template-dependency-validation).
+
+---
+
 ### 🔹 Day 17-20: Templates
 
 **CRITICAL: Templates cannot be built until all required components exist**
@@ -585,9 +599,9 @@ JS: ui.frontend/src/main/webpack/components/accordion-section.js
 
 2. Edit Structure:
    - Add root responsive grid (locked)
-   - Add xf-header-reference (locked, configure default path)
+   - Add Header XF reference: `setia/components/experiencefragment` (locked, `fragmentVariationPath` = header master)
    - Add responsive grid for content (editable)
-   - Add xf-footer-reference (locked, configure default path)
+   - Add Footer XF reference: `setia/components/experiencefragment` (locked, `fragmentVariationPath` = footer master)
 
 3. Edit Initial Content (optional):
    - Add home-hero as first component
@@ -828,6 +842,21 @@ JS: ui.frontend/src/main/webpack/components/accordion-section.js
 - ✅ All assets uploaded to DAM
 - ✅ Responsive on all devices
 - ✅ No broken links
+
+---
+
+### 🔹 Phase: Bootstrap Initial Authored Content (follows Pages Layer)
+
+The site must ship with realistic initial content, not empty grids. This phase is the bridge between "templates render" and "site looks production-like." Full procedure: [09 — Bootstrap Initial Content](./09-boostrap-initial-content.md).
+
+1. **Create realistic initial page content** — author every page to resemble the production screenshots (hero, banners, headings, card grids, accordion, downloads, partners, CTA).
+2. **Populate all dialogs** — no empty required fields, no placeholder Lorem Ipsum left in.
+3. **Upload DAM assets** — copy from `docs/assets/` into `/content/dam/setia/...` (see [08 — DAM Asset Strategy](./08-dam-asset-strategy.md)).
+4. **Configure navigation** — header nav resolves to Company / Services / Solutions; logo → home root.
+5. **Export authored content into `ui.content`** — pages, XFs, DAM, and `filter.xml` entries are version-controlled.
+6. **Validate screenshots against the production reference** — compare each page to `docs/images/website_*.png`.
+
+> Acceptance criteria for this phase live in [09 → Bootstrap Acceptance Criteria](./09-boostrap-initial-content.md#bootstrap-acceptance-criteria). Empty responsive grids are **invalid output** (see [05 → R9](./05-technical-risks.md)).
 
 ---
 
