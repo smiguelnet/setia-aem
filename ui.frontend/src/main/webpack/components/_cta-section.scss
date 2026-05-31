@@ -1,0 +1,77 @@
+//== CTA Section
+
+.cta-section {
+    background-color: $color-primary-dark-blue;
+    color: $color-white;
+    padding: $spacing-xl $spacing-sm;
+
+    @include respond-to(tablet) {
+        padding: $spacing-xxl $spacing-lg;
+    }
+
+    &__container {
+        @include container;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $spacing-md;
+        text-align: center;
+
+        @include respond-to(tablet) {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+        }
+    }
+
+    &__content {
+        flex: 1;
+    }
+
+    &__title {
+        color: $color-white;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__subtitle {
+        color: $color-white;
+        margin-bottom: $spacing-md;
+    }
+
+    &__button {
+        width: 100%;
+        max-width: 300px;
+
+        @include respond-to(tablet) {
+            width: auto;
+        }
+    }
+
+    &__mascot {
+        display: none;
+
+        @include respond-to(mobile) {
+            display: block;
+        }
+
+        img {
+            max-width: 180px;
+            height: auto;
+        }
+    }
+
+    //== Theme variants (Style System)
+    &--theme-light {
+        background-color: $color-light-gray;
+        color: $color-text;
+
+        .cta-section__title,
+        .cta-section__subtitle {
+            color: $color-primary-dark-blue;
+        }
+    }
+
+    &--theme-accent {
+        background-color: $color-primary-green;
+    }
+}

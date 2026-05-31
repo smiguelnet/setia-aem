@@ -1,0 +1,111 @@
+//== Home Hero
+
+.home-hero {
+    position: relative;
+    background-color: $color-primary-dark-blue;
+    background-size: cover;
+    background-position: center;
+    color: $color-white;
+    padding: $spacing-xxl $spacing-sm $spacing-xl;
+    overflow: hidden;
+
+    @include respond-to(tablet) {
+        padding: ($spacing-xxl + $spacing-lg) $spacing-lg $spacing-xl;
+    }
+
+    // subtle tech-pattern overlay
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 20% 30%, rgba($color-primary-light-blue, 0.25), transparent 40%);
+        pointer-events: none;
+    }
+
+    &__inner {
+        @include container;
+        position: relative;
+    }
+
+    &__title {
+        color: $color-white;
+        max-width: 18ch;
+        @include heading-responsive($font-size-h1, $font-size-h1-mobile);
+        animation: home-hero-fade-in $transition-slow $transition-easing;
+    }
+
+    &__subtitle {
+        color: $color-white;
+        font-size: $font-size-large;
+        max-width: 60ch;
+        margin-top: $spacing-md;
+    }
+
+    &__cards {
+        @include container;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-md;
+        margin-top: $spacing-xl;
+
+        @include respond-to(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include respond-to(desktop) {
+            grid-template-columns: repeat(3, 1fr);
+            // overlap the bottom edge of the hero
+            margin-bottom: -($spacing-xxl);
+        }
+    }
+
+    &__card {
+        background-color: rgba($color-white, 0.08);
+        border: 1px solid rgba($color-white, 0.15);
+        border-radius: $border-radius-md;
+        padding: $spacing-lg;
+        backdrop-filter: blur(4px);
+        @include transition(transform, background-color);
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                transform: translateY(-4px);
+                background-color: rgba($color-white, 0.14);
+            }
+        }
+    }
+
+    &__card-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: $spacing-sm;
+
+        img { width: 100%; height: 100%; object-fit: contain; }
+    }
+
+    &__card-title {
+        color: $color-white;
+        font-size: $font-size-h5;
+        margin-bottom: $spacing-xs;
+    }
+
+    &__card-desc {
+        color: rgba($color-white, 0.85);
+        font-size: $font-size-small;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__card-link {
+        color: $color-primary-green;
+        font-weight: $font-weight-semibold;
+        text-decoration: none;
+
+        &:hover { text-decoration: underline; color: $color-primary-green; }
+    }
+}
+
+@keyframes home-hero-fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

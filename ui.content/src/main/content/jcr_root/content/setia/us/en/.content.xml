@@ -2,82 +2,91 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        pageTitle="Setia"
         jcr:primaryType="cq:PageContent"
-        jcr:title="en"
-        cq:contextHubPath="/etc/cloudsettings/default/contexthub"
-        cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
-        cq:template="/conf/setia/settings/wcm/templates/page-content"
-        sling:resourceType="setia/components/page"
-    >
+        jcr:title="Home"
+        pageTitle="Setia — Your global software outsourcing partner"
+        cq:template="/conf/setia/settings/wcm/templates/landing-page"
+        sling:resourceType="setia/components/page">
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="setia/components/container"
             layout="responsiveGrid">
+            <home-hero
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/home-hero"
+                mainTitle="Your global software outsourcing partner"
+                subtitle="Leading you through the journey to transform your ideas into successful digital products"
+                backgroundImage="/content/dam/setia/images/hero-backgrounds/bg-home.jpg">
+                <serviceCards jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        icon="/content/dam/setia/icons/services/blockchain-icon.jpg"
+                        title="Blockchain, Smart Contracts and NFTs"
+                        description="Leverage our blockchain expertise to build secure, decentralized solutions."
+                        linkUrl="/content/setia/us/en/solutions"
+                        linkText="Learn More"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        title="Cloud-Native Software Development"
+                        description="Build scalable, resilient cloud-native applications on modern platforms."
+                        linkUrl="/content/setia/us/en/services"
+                        linkText="Learn More"/>
+                    <item2
+                        jcr:primaryType="nt:unstructured"
+                        title="Digital Transformation and Industry 4.0"
+                        description="Accelerate your business transformation with Industry 4.0 solutions."
+                        linkUrl="/content/setia/us/en/services"
+                        linkText="Learn More"/>
+                </serviceCards>
+            </home-hero>
             <container
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="setia/components/container">
-                <title
+                sling:resourceType="setia/components/container"
+                layout="responsiveGrid">
+                <tagline
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="setia/components/title"/>
-                <container
+                    sling:resourceType="setia/components/section-heading"
+                    title="Delivering Innovative and Quality Solutions"
+                    subtitle="Leading you through the journey to transform your ideas into accessible digital products."
+                    headingLevel="h2"
+                    alignment="center"/>
+                <what-we-do
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="setia/components/container"
-                    layout="responsiveGrid">
-                    <teaser
-                        jcr:description="&lt;p>Don't stop half way, go for the top!&lt;/p>&#xd;&#xa;"
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Epic Journey"
-                        sling:resourceType="setia/components/teaser"
-                        actionsEnabled="false"
-                        descriptionFromPage="false"
-                        textIsRich="true"
-                        titleFromPage="false">
-                        <cq:responsive jcr:primaryType="nt:unstructured">
-                            <default
-                                jcr:primaryType="nt:unstructured"
-                                offset="0"
-                                width="4"/>
-                        </cq:responsive>
-                    </teaser>
-                    <teaser_copy
-                        jcr:description="&lt;p>Don't stop half way, go for the top!&lt;/p>&#xd;&#xa;"
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Epic Journey"
-                        sling:resourceType="setia/components/teaser"
-                        actionsEnabled="false"
-                        descriptionFromPage="false"
-                        textIsRich="true"
-                        titleFromPage="false">
-                        <cq:responsive jcr:primaryType="nt:unstructured">
-                            <default
-                                jcr:primaryType="nt:unstructured"
-                                offset="0"
-                                width="4"/>
-                        </cq:responsive>
-                    </teaser_copy>
-                    <teaser_copy_1579324932
-                        jcr:description="&lt;p>Don't stop half way, go for the top!&lt;/p>&#xd;&#xa;"
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Epic Journey"
-                        sling:resourceType="setia/components/teaser"
-                        actionsEnabled="false"
-                        descriptionFromPage="false"
-                        textIsRich="true"
-                        titleFromPage="false">
-                        <cq:responsive jcr:primaryType="nt:unstructured">
-                            <default
-                                jcr:primaryType="nt:unstructured"
-                                offset="0"
-                                width="4"/>
-                        </cq:responsive>
-                    </teaser_copy_1579324932>
-                    <helloworld
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="setia/components/helloworld"
-                        text="lalala :)"/>
-                </container>
+                    sling:resourceType="setia/components/section-heading"
+                    title="What we do"
+                    subtitle="Digital Products for Future-Ready Businesses"
+                    headingLevel="h2"
+                    alignment="center"/>
+                <services-grid
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/card-grid"
+                    columns="3"
+                    gap="medium">
+                    <cardItems jcr:primaryType="nt:unstructured">
+                        <item0 jcr:primaryType="nt:unstructured" title="Blockchain Application Development" description="Build secure, decentralized applications leveraging blockchain technology."/>
+                        <item1 jcr:primaryType="nt:unstructured" title="Mobile Application Development" description="iOS and Android mobile solutions tailored to your business."/>
+                        <item2 jcr:primaryType="nt:unstructured" title="Cloud-native Applications Development" description="Scalable, resilient cloud-first applications on modern platforms."/>
+                        <item3 jcr:primaryType="nt:unstructured" title="Enterprise Application Development" description="Robust enterprise-grade systems built for performance and scale."/>
+                        <item4 jcr:primaryType="nt:unstructured" title="Enterprise Application Integration" description="Seamless integration across your entire technology ecosystem."/>
+                        <item5 jcr:primaryType="nt:unstructured" title="Robotic Process Automation Implementation" description="Intelligent process automation to reduce costs and boost efficiency."/>
+                    </cardItems>
+                </services-grid>
+                <engagement
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/rich-text-section"
+                    title="Engagement. Gamification as a key element"
+                    text="&lt;p>Gamification connects smaller tasks to larger goals with Gamification. It is a game or a business strategy used between different players. See our works, understand our vision to go beyond what others have done to your the best possible performance, keeping people fully beyond their goal.&lt;/p>"/>
             </container>
+            <cta-section
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/cta-section"
+                title="Ready to tackle your next challenge?"
+                subtitle="Setia can help you build value through innovation."
+                buttonText="Get in touch"
+                buttonLink="mailto:connect@setia.com.br"
+                includeMascot="true"
+                mascotImage="/content/dam/setia/logos/brand/contact_area.png"
+                mascotAlt="Setia mascot"/>
         </root>
     </jcr:content>
 </jcr:root>

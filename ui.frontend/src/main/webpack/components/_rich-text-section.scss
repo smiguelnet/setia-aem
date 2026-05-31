@@ -1,0 +1,52 @@
+//== Rich Text Section
+
+.rich-text-section {
+    @include container;
+    margin-top: $spacing-lg;
+    margin-bottom: $spacing-lg;
+
+    &__title {
+        color: $color-primary-dark-blue;
+        margin-bottom: $spacing-md;
+    }
+
+    &__content {
+        color: $color-text;
+        line-height: $line-height-base;
+
+        p { margin: 0 0 $spacing-sm; }
+
+        a {
+            color: $color-primary-light-blue;
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            margin: 0 0 $spacing-sm;
+            padding-left: $spacing-md;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: $spacing-md 0 0;
+
+        li {
+            position: relative;
+            padding-left: $spacing-md;
+            margin-bottom: $spacing-xs;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0.6em;
+                width: 8px;
+                height: 8px;
+                border-radius: $border-radius-round;
+                background-color: $color-primary-green;
+            }
+        }
+    }
+}

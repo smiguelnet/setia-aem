@@ -1,0 +1,57 @@
+//== Image Section
+
+.image-section {
+    @include container;
+    @include section-spacing;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @include respond-to(tablet) {
+        flex-direction: row;
+        align-items: center;
+        gap: $spacing-xl;
+    }
+
+    &--image-left {
+        @include respond-to(tablet) {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &__content {
+        flex: 1;
+    }
+
+    &__title {
+        color: $color-primary-dark-blue;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__subtitle {
+        font-size: $font-size-large;
+        color: $color-text-secondary;
+        margin-bottom: $spacing-md;
+    }
+
+    &__description {
+        line-height: $line-height-base;
+
+        p { margin: 0 0 $spacing-sm; }
+    }
+
+    &__image {
+        width: 100%;
+
+        @include respond-to(tablet) {
+            width: var(--image-width, 50%);
+            flex: 0 0 var(--image-width, 50%);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: $border-radius-md;
+        }
+    }
+}

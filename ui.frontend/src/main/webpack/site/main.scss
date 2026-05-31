@@ -1,5 +1,16 @@
-
+// 1. Configuration (no CSS output — must come first)
 @import 'variables';
+@import 'mixins';
+
+// 2. Base
+@import 'reset';
 @import 'base';
+@import 'typography';
+@import 'layout';
+
+// 3. Components (globbed)
 @import '../components/**/*.scss';
 @import './styles/*.scss';
+
+// 4. Utilities (last, so helpers can override)
+@import 'utilities';

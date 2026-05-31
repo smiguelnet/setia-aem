@@ -1,0 +1,24 @@
+<!--/* Logo Gallery (see docs/04 §12) — data via the Sling Model */-->
+<sly data-sly-use.model="br.com.setia.core.models.LogoGalleryModel"/>
+<sly data-sly-test.hasLogos="${model.logos.size > 0}"/>
+
+<div class="logo-gallery" data-sly-test="${hasLogos}">
+    <h3 class="logo-gallery__title" data-sly-test="${model.title}">${model.title}</h3>
+    <div class="logo-gallery__grid">
+        <sly data-sly-list.logo="${model.logos}">
+            <div class="logo-gallery__item">
+                <sly data-sly-use.widthFmt="${'width: {0};' @ format=[logo.width]}"/>
+                <a data-sly-test="${logo.linkUrl}" href="${logo.linkUrl}" target="_blank" rel="noopener">
+                    <img src="${logo.imagePath}" alt="${logo.altText}"
+                         style="${logo.width ? widthFmt : '' @ context='styleString'}"/>
+                </a>
+                <img data-sly-test="${!logo.linkUrl}" src="${logo.imagePath}" alt="${logo.altText}"
+                     style="${logo.width ? widthFmt : '' @ context='styleString'}"/>
+            </div>
+        </sly>
+    </div>
+</div>
+
+<sly data-sly-test="${!hasLogos}">
+    <div class="cq-placeholder" data-emptytext="${'Logo Gallery' @ i18n}"></div>
+</sly>

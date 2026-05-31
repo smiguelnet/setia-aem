@@ -1,0 +1,26 @@
+//== Layout helpers
+
+.container {
+    @include container;
+}
+
+.section {
+    @include section-spacing;
+}
+
+// Alternate / light background section
+.section--alt {
+    background-color: $color-background-alt;
+}
+
+// Two-column flex helper (stacks on mobile)
+.two-column {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @include respond-to(tablet) {
+        flex-direction: row;
+        align-items: center;
+    }
+}

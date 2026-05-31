@@ -304,6 +304,22 @@
                         </assetToComponentMapping>
                     </cq:authoring>
                 </policy_1575040440977>
+                <policy_content_main
+                    jcr:description="Allowed components in the Content Page editable container."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Content Page Main Container"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[setia/components/section-heading,setia/components/rich-text-section,setia/components/card-grid,setia/components/image-section,setia/components/accordion-section,setia/components/download-list,setia/components/logo-gallery,setia/components/cta-section]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_content_main>
+                <policy_landing_main
+                    jcr:description="Allowed components in the Landing Page editable container."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Landing Page Main Container"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[setia/components/section-heading,setia/components/rich-text-section,setia/components/card-grid,setia/components/cta-section]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_landing_main>
             </container>
             <teaser jcr:primaryType="nt:unstructured">
                 <policy_1575031387650
@@ -329,6 +345,92 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1575032193319>
             </download>
+            <card-grid jcr:primaryType="nt:unstructured">
+                <policy_cardgrid
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Card Grid"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    allowedColumns="[2,3,4]"
+                    defaultColumns="3">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            cq:styleGroupLabel="Theme">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <green
+                                    jcr:primaryType="nt:unstructured"
+                                    cq:styleClasses="card-grid--theme-green"
+                                    cq:styleLabel="Green (default)"/>
+                                <blue
+                                    jcr:primaryType="nt:unstructured"
+                                    cq:styleClasses="card-grid--theme-blue"
+                                    cq:styleLabel="Dark Blue"/>
+                                <neutral
+                                    jcr:primaryType="nt:unstructured"
+                                    cq:styleClasses="card-grid--theme-neutral"
+                                    cq:styleLabel="Neutral"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_cardgrid>
+            </card-grid>
+            <cta-section jcr:primaryType="nt:unstructured">
+                <policy_cta
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="CTA Section"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            cq:styleGroupLabel="Theme">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <light
+                                    jcr:primaryType="nt:unstructured"
+                                    cq:styleClasses="cta-section--theme-light"
+                                    cq:styleLabel="Light (default)"/>
+                                <dark
+                                    jcr:primaryType="nt:unstructured"
+                                    cq:styleClasses="cta-section--theme-dark"
+                                    cq:styleLabel="Dark"/>
+                                <accent
+                                    jcr:primaryType="nt:unstructured"
+                                    cq:styleClasses="cta-section--theme-accent"
+                                    cq:styleLabel="Accent (green)"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_cta>
+            </cta-section>
+            <page-banner jcr:primaryType="nt:unstructured">
+                <policy_pagebanner
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Page Banner"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            cq:styleGroupLabel="Theme">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <dark
+                                    jcr:primaryType="nt:unstructured"
+                                    cq:styleClasses="page-banner--theme-dark"
+                                    cq:styleLabel="Dark Blue (default)"/>
+                                <light
+                                    jcr:primaryType="nt:unstructured"
+                                    cq:styleClasses="page-banner--theme-light"
+                                    cq:styleLabel="Light"/>
+                                <accent
+                                    jcr:primaryType="nt:unstructured"
+                                    cq:styleClasses="page-banner--theme-accent"
+                                    cq:styleLabel="Accent (green)"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_pagebanner>
+            </page-banner>
             <page jcr:primaryType="nt:unstructured">
                 <policy
                     jcr:description="Includes the required client libraries."

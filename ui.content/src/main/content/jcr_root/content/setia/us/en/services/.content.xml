@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Services"
+        pageTitle="We are a world-class Software Developer Company"
+        cq:template="/conf/setia/settings/wcm/templates/page-content"
+        sling:resourceType="setia/components/page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="setia/components/container"
+            layout="responsiveGrid">
+            <page-banner
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/page-banner"
+                title="We are a world-class Software Developer Company"
+                backgroundImage="/content/dam/setia/images/banners/bg-content.jpg"/>
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/container"
+                layout="responsiveGrid">
+                <overview
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/rich-text-section"
+                    title="Turn Opportunities Into Results using Technology"
+                    text="&lt;p>With a solid 21-year background in a practice that combines consulting, development and design at scale, Setia delivers innovative solutions across every industry.&lt;/p>"/>
+                <what-we-do
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/section-heading"
+                    title="What we do"
+                    subtitle="Digital Products for Future-Ready Businesses"
+                    headingLevel="h2"
+                    alignment="center"/>
+                <services-grid
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/card-grid"
+                    columns="3"
+                    gap="medium">
+                    <cardItems jcr:primaryType="nt:unstructured">
+                        <item0 jcr:primaryType="nt:unstructured" title="Blockchain Application Development" description="Secure decentralized applications."/>
+                        <item1 jcr:primaryType="nt:unstructured" title="Mobile Application Development" description="iOS and Android mobile solutions."/>
+                        <item2 jcr:primaryType="nt:unstructured" title="Cloud-native Applications Development" description="Scalable cloud-first applications."/>
+                        <item3 jcr:primaryType="nt:unstructured" title="Enterprise Application Development" description="Robust enterprise-grade systems."/>
+                        <item4 jcr:primaryType="nt:unstructured" title="Enterprise Application Integration" description="Seamless system integration."/>
+                        <item5 jcr:primaryType="nt:unstructured" title="Robotic Process Automation Implementation" description="Intelligent process automation."/>
+                    </cardItems>
+                </services-grid>
+                <how-components
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/image-section"
+                    title="and how..."
+                    subtitle="Taking advantage of our business-blocks to speed up your product development"
+                    imagePath="/content/dam/setia/images/content-images/components.png"
+                    imageAlt="Component icons: configure, secure API, blockchain API, code, plus equals product box"
+                    imagePosition="right"
+                    imageWidth="50%"/>
+                <how-accordion
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/accordion-section">
+                    <accordionItems jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            itemTitle="Blockchain Application Development"
+                            itemContent="&lt;p>We apply quality-improved methodologies to work with issuing and managing digital assets in order to certify Authenticity, Quantity, Ownership and Age of Items.&lt;/p>"
+                            expandedByDefault="true"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            itemTitle="Enterprise Application Development and Integration"
+                            itemContent="&lt;p>Setia has standardized, defined and documented processes in their software development practice in order to deliver quality software and solutions.&lt;/p>"
+                            expandedByDefault="false"/>
+                        <item2
+                            jcr:primaryType="nt:unstructured"
+                            itemTitle="Gamification Content and Solutions"
+                            itemContent="&lt;p>Connecting smaller tasks to larger goals using gamification techniques to promote desired behaviours among customers and employees.&lt;/p>"
+                            expandedByDefault="false"/>
+                        <item3
+                            jcr:primaryType="nt:unstructured"
+                            itemTitle="Robotic Process Automation (RPA)"
+                            itemContent="&lt;p>Automate repetitive tasks and streamline business processes with intelligent robotic process automation solutions.&lt;/p>"
+                            expandedByDefault="false"/>
+                    </accordionItems>
+                </how-accordion>
+                <strategy
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/image-section"
+                    title="Our Strategy: Component-driven Acceleration"
+                    subtitle="Business blocks as additional components to empower and accelerate your business"
+                    imagePath="/content/dam/setia/images/diagrams/strategy.jpg"
+                    imageAlt="Component-driven acceleration strategy diagram"
+                    imagePosition="right"
+                    imageWidth="50%"/>
+                <partners-heading
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/section-heading"
+                    title="Partners"
+                    headingLevel="h2"
+                    alignment="center"/>
+                <partners
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/logo-gallery">
+                    <logos jcr:primaryType="nt:unstructured">
+                        <item0 jcr:primaryType="nt:unstructured" imagePath="/content/dam/setia/logos/partners/parceria_aws.png" altText="Amazon Web Services" width="120px"/>
+                        <item1 jcr:primaryType="nt:unstructured" imagePath="/content/dam/setia/logos/partners/parceria_neo.png" altText="Neo4j" width="100px"/>
+                        <item2 jcr:primaryType="nt:unstructured" imagePath="/content/dam/setia/logos/partners/parceria_ibm.png" altText="IBM" width="100px"/>
+                        <item3 jcr:primaryType="nt:unstructured" imagePath="/content/dam/setia/logos/partners/parceria_its.png" altText="ITS" width="120px"/>
+                    </logos>
+                </partners>
+            </container>
+            <cta-section
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/cta-section"
+                title="Ready to tackle your next challenge?"
+                subtitle="Setia can help you build value through innovation."
+                buttonText="Get in touch"
+                buttonLink="mailto:connect@setia.com.br"
+                includeMascot="true"
+                mascotImage="/content/dam/setia/logos/brand/contact_area.png"
+                mascotAlt="Setia mascot"/>
+        </root>
+    </jcr:content>
+</jcr:root>

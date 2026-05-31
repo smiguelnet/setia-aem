@@ -1,0 +1,22 @@
+<!--/* Image Section — text + image/diagram (see docs/04 §9) */-->
+<sly data-sly-test.position="${properties.imagePosition || 'right'}"/>
+<sly data-sly-use.widthFmt="${'--image-width: {0};' @ format=[properties.imageWidth || '50%']}"/>
+
+<section class="image-section image-section--image-${position}"
+         data-sly-test="${properties.imagePath || properties.title}">
+    <div class="image-section__content">
+        <h2 class="image-section__title" data-sly-test="${properties.title}">${properties.title}</h2>
+        <p class="image-section__subtitle" data-sly-test="${properties.subtitle}">${properties.subtitle}</p>
+        <div class="image-section__description" data-sly-test="${properties.description}">
+            ${properties.description @ context='html'}
+        </div>
+    </div>
+    <div class="image-section__image" style="${widthFmt @ context='styleString'}"
+         data-sly-test="${properties.imagePath}">
+        <img src="${properties.imagePath}" alt="${properties.imageAlt}"/>
+    </div>
+</section>
+
+<sly data-sly-test="${!(properties.imagePath || properties.title)}">
+    <div class="cq-placeholder" data-emptytext="${'Image Section' @ i18n}"></div>
+</sly>

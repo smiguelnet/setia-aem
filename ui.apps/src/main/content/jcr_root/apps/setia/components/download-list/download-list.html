@@ -1,0 +1,25 @@
+<!--/* Download List (see docs/04 §11) — data via the Sling Model */-->
+<sly data-sly-use.model="br.com.setia.core.models.DownloadListModel"/>
+<sly data-sly-test.hasItems="${model.items.size > 0}"/>
+
+<div class="download-list" data-sly-test="${hasItems}">
+    <h3 class="download-list__title" data-sly-test="${model.title}">${model.title}</h3>
+    <ul class="download-list__items">
+        <sly data-sly-list.item="${model.items}">
+            <li class="download-item">
+                <span class="download-item__icon download-item__icon--${item.fileType}">${item.fileType}</span>
+                <div class="download-item__info">
+                    <h4 class="download-item__title">${item.fileTitle}</h4>
+                    <p class="download-item__desc" data-sly-test="${item.fileDescription}">${item.fileDescription}</p>
+                    <span class="download-item__size" data-sly-test="${item.fileSize}">${item.fileSize}</span>
+                </div>
+                <a class="download-item__button button button--primary"
+                   href="${item.fileAsset}" download data-sly-test="${item.fileAsset}">Download</a>
+            </li>
+        </sly>
+    </ul>
+</div>
+
+<sly data-sly-test="${!hasItems}">
+    <div class="cq-placeholder" data-emptytext="${'Download List' @ i18n}"></div>
+</sly>

@@ -1,0 +1,102 @@
+//== Card Grid
+
+.card-grid {
+    @include container;
+    @include section-spacing;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-md;
+
+        @include respond-to(mobile) {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        @include respond-to(desktop) {
+            gap: $spacing-lg;
+        }
+    }
+
+    // Column variants (desktop)
+    &--2-col &__container {
+        @include respond-to(tablet) { grid-template-columns: repeat(2, 1fr); }
+    }
+    &--3-col &__container {
+        @include respond-to(desktop) { grid-template-columns: repeat(3, 1fr); }
+    }
+    &--4-col &__container {
+        @include respond-to(desktop) { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    // Gap variants
+    &--gap-small &__container  { gap: $spacing-sm; }
+    &--gap-large &__container  { gap: $spacing-lg; }
+
+    //== Theme variants (Style System)
+    &--theme-blue .card    { background-color: $color-primary-dark-blue; }
+    &--theme-neutral .card {
+        background-color: $color-white;
+        color: $color-text;
+        border: 1px solid $color-border;
+
+        .card__title { color: $color-primary-dark-blue; }
+        .card__description { color: $color-text; }
+        .card__link { color: $color-primary-light-blue; }
+    }
+}
+
+.card {
+    background-color: $color-primary-green;
+    border-radius: $border-radius-md;
+    padding: $spacing-lg;
+    color: $color-white;
+    text-align: center;
+    box-shadow: $shadow-sm;
+    @include transition(transform, box-shadow);
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: $shadow-lg;
+        }
+    }
+
+    &__icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto $spacing-md;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__title {
+        font-size: $font-size-h4;
+        font-weight: $font-weight-semibold;
+        color: $color-white;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__description {
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+        margin-bottom: $spacing-md;
+    }
+
+    &__link {
+        display: inline-block;
+        color: $color-white;
+        text-decoration: underline;
+        font-weight: $font-weight-medium;
+        @include transition(opacity);
+
+        &:hover {
+            opacity: 0.8;
+            color: $color-white;
+        }
+    }
+}

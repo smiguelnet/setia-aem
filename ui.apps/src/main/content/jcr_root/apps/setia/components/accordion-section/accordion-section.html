@@ -1,0 +1,27 @@
+<!--/* Accordion Section (see docs/04 §10) — data via the Sling Model */-->
+<sly data-sly-use.model="br.com.setia.core.models.AccordionSectionModel"/>
+<sly data-sly-test.hasItems="${model.items.size > 0}"/>
+
+<div class="accordion-section" data-sly-test="${hasItems}">
+    <h3 class="accordion-section__title" data-sly-test="${model.title}">${model.title}</h3>
+    <div class="accordion-section__list">
+        <sly data-sly-list.item="${model.items}">
+            <div class="accordion-item ${item.expandedByDefault ? 'accordion-item--expanded' : ''}">
+                <button class="accordion-item__header" type="button"
+                        aria-expanded="${item.expandedByDefault ? 'true' : 'false'}">
+                    <span class="accordion-item__title">${item.itemTitle}</span>
+                    <span class="accordion-item__icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion-item__panel">
+                    <div class="accordion-item__content">
+                        ${item.itemContent @ context='html'}
+                    </div>
+                </div>
+            </div>
+        </sly>
+    </div>
+</div>
+
+<sly data-sly-test="${!hasItems}">
+    <div class="cq-placeholder" data-emptytext="${'Accordion Section' @ i18n}"></div>
+</sly>

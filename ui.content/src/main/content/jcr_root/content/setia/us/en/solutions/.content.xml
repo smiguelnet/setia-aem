@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Solutions"
+        pageTitle="Blockchain — Authenticity and Ownership"
+        cq:template="/conf/setia/settings/wcm/templates/page-content"
+        sling:resourceType="setia/components/page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="setia/components/container"
+            layout="responsiveGrid">
+            <page-banner
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/page-banner"
+                title="Blockchain"
+                subtitle="Authenticity and Ownership"
+                backgroundImage="/content/dam/setia/images/banners/bg-content.jpg"/>
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/container"
+                layout="responsiveGrid">
+                <overview
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/rich-text-section"
+                    title="We are on top of today&apos;s leading technologies"
+                    text="&lt;p>Leverage Blockchain Outsourcing Services from Setia. Using quality-improved methodologies to work with issuing and managing digital assets in order to certify Authenticity, Quantity, Ownership and Age of Items.&lt;/p>"/>
+                <platform
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/image-section"
+                    title="Digital Assets Management Platform"
+                    subtitle="Business blocks as additional components to empower and accelerate your business"
+                    imagePath="/content/dam/setia/images/diagrams/digital-assets.jpg"
+                    imageAlt="Digital Assets Management Platform architecture — S-API, S-Gateway, S-Notary, S-View layers"
+                    imagePosition="right"
+                    imageWidth="60%"/>
+                <features-heading
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/section-heading"
+                    title="Platform Features"
+                    headingLevel="h2"
+                    alignment="center"/>
+                <features
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/card-grid"
+                    columns="3"
+                    gap="medium">
+                    <cardItems jcr:primaryType="nt:unstructured">
+                        <item0 jcr:primaryType="nt:unstructured" title="Built-in Stellar" description="A leading platform built on Stellar Blockchain. Each asset is tokenized ensuring a single entry into the Marketplace."/>
+                        <item1 jcr:primaryType="nt:unstructured" title="Securitized Assets" description="Each asset can be investigated from any Stellar Network Explorer to assert its authenticity."/>
+                        <item2 jcr:primaryType="nt:unstructured" title="Marketplace and Digital Collections" description="For each asset customers can choose whether to keep it or put it in the Marketplace at a set price."/>
+                        <item3 jcr:primaryType="nt:unstructured" title="Rarity Factor" description="The rarity of each asset is defined by a counter and well defined set of rules. Customers can check the actual quantity on any Stellar explorer."/>
+                        <item4 jcr:primaryType="nt:unstructured" title="Concurrency Management" description="The platform implements channels to manage blockchain transactions assigning time in seconds."/>
+                        <item5 jcr:primaryType="nt:unstructured" title="Non-Fungible Tokens" description="The platform supports non-fungible token trading, making the assets similar to the Ethereum standard ERC-721 / ERC-1155."/>
+                    </cardItems>
+                </features>
+            </container>
+            <cta-section
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/cta-section"
+                title="Ready to tackle your next challenge?"
+                subtitle="Setia can help you build value through innovation."
+                buttonText="Get in touch"
+                buttonLink="mailto:connect@setia.com.br"
+                includeMascot="true"
+                mascotImage="/content/dam/setia/logos/brand/contact_area.png"
+                mascotAlt="Setia mascot"/>
+        </root>
+    </jcr:content>
+</jcr:root>

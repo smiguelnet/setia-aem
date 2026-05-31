@@ -1,33 +1,26 @@
-//== Base
+//== Base element styles
 
 html,
 body {
     margin: 0;
-    font-size:   $font-size;
-    font-family: $font-family;
-    line-height: $font-height;
-    color:       $color-foreground;
-    background:  $color-background;
-
-    @media (prefers-color-scheme: dark) {
-        color:       $color-foreground-dark;
-        background:  $color-background-dark;
-    }
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $color-text;
+    background: $color-background;
 }
-
 
 a {
-    color: $color-link;
+    color: $color-primary-light-blue;
+    @include transition(color);
 
-    @media (prefers-color-scheme: dark) {
-        color: $color-link-dark;
+    &:hover {
+        color: darken($color-primary-light-blue, 10%);
     }
 }
 
-button,
-input,
-optgroup,
-select,
-textarea {
-    font: inherit;
+// Visible focus indicator for accessibility
+:focus-visible {
+    outline: 2px solid $color-primary-light-blue;
+    outline-offset: 2px;
 }

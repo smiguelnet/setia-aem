@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/setia" mode="merge"/>
-    <filter root="/content/setia" mode="merge"/>
+    <!-- Templates and policies are code — replace mode so structural refactors apply cleanly -->
+    <filter root="/conf/setia"/>
+    <!-- Pages bootstrapped from source — replace mode wipes archetype placeholders -->
+    <filter root="/content/setia"/>
+    <!-- DAM folder metadata only; binaries uploaded separately (merge avoids binary churn) -->
     <filter root="/content/dam/setia" mode="merge">
         <exclude pattern="/content/dam/setia(/.*)?"/>
         <include pattern="/content/dam/setia/jcr:content(/.*)?"/>
     </filter>
+    <!-- Keep archetype sample asset (merge to avoid binary churn) -->
     <filter root="/content/dam/setia/asset.jpg" mode="merge"/>
-    <filter root="/content/experience-fragments/setia" mode="merge"/>
+    <!-- XFs are code-controlled — replace mode -->
+    <filter root="/content/experience-fragments/setia"/>
 </workspaceFilter>

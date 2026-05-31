@@ -1,0 +1,15 @@
+<!--/* Page Banner — inner page hero with title + subtitle (see docs/04 §5) */-->
+<sly data-sly-test.hasContent="${properties.title || wcmmode.edit}"/>
+<sly data-sly-use.fmt="${'background-image: url({0});' @ format=[properties.backgroundImage]}"/>
+
+<section class="page-banner ${currentStyle.cssClasses}"
+         style="${properties.backgroundImage ? fmt : '' @ context='styleString'}"
+         data-sly-test="${hasContent}">
+    <div class="page-banner__container">
+        <h1 class="page-banner__title">${properties.title}</h1>
+        <p class="page-banner__subtitle" data-sly-test="${properties.subtitle}">${properties.subtitle}</p>
+    </div>
+</section>
+<sly data-sly-test="${!hasContent}">
+    <div class="cq-placeholder" data-emptytext="${'Page Banner' @ i18n}"></div>
+</sly>

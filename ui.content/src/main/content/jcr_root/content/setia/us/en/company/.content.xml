@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Company"
+        pageTitle="We are Setia"
+        cq:template="/conf/setia/settings/wcm/templates/page-content"
+        sling:resourceType="setia/components/page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="setia/components/container"
+            layout="responsiveGrid">
+            <page-banner
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/page-banner"
+                title="We are Setia"
+                subtitle="Delivering Innovative and Quality Solutions"
+                backgroundImage="/content/dam/setia/images/banners/bg-content.jpg"/>
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/container"
+                layout="responsiveGrid">
+                <our-story
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/rich-text-section"
+                    title="Our Story"
+                    text="&lt;p>Offering solutions to a wide range of clients in a variety of fields for more than 21 years. Founded in 2005, Setia has been a profitable and successful company working with some of the most competitive businesses, associations and institutions.&lt;/p>&lt;p>From small businesses to large companies, we empower brands to succeed online.&lt;/p>"/>
+                <what-makes-setia
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/rich-text-section"
+                    title="What makes Setia different?"
+                    text="&lt;p>We pave the way for your innovation, creativity and profitability.&lt;/p>&lt;ul>&lt;li>COMPLIANCE-FOCUSED APPROACH&lt;/li>&lt;li>WE BUILD INNOVATIVE, HIGH-AVAILABILITY, QUALITY SYSTEMS&lt;/li>&lt;li>THE BEST TECHNOLOGY AVAILABLE TO MEET THE PROJECT&apos;S BUSINESS CHALLENGES&lt;/li>&lt;li>DEDICATED PROJECT COORDINATION AND DELIVERY SUPPORT&lt;/li>&lt;li>INVOLVEMENT AT DIFFERENT LEVELS&lt;/li>&lt;/ul>"/>
+                <downloads
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/download-list"
+                    title="Brochures / Download">
+                    <downloadItems jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            fileTitle="Institutional Presentation"
+                            fileDescription="Overview of Setia&apos;s capabilities and services"
+                            fileAsset="/content/dam/setia/documents/presentations/setia-institucional.pdf"
+                            fileSize="1.9 MB"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            fileTitle="Software Development Method"
+                            fileDescription="Setia&apos;s proven software development methodology"
+                            fileAsset="/content/dam/setia/documents/presentations/metodo-trabalho-setia.pdf"
+                            fileSize="2.0 MB"/>
+                        <item2
+                            jcr:primaryType="nt:unstructured"
+                            fileTitle="MPS.BR"
+                            fileDescription="Brazilian Software Process Improvement certification document"
+                            fileAsset="/content/dam/setia/documents/presentations/metodo-trabalho-setia.pdf"
+                            fileSize="2.0 MB"/>
+                    </downloadItems>
+                </downloads>
+                <our-services-heading
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/section-heading"
+                    title="Our services"
+                    subtitle="Digital Products for Future-Ready Businesses"
+                    headingLevel="h2"
+                    alignment="center"/>
+                <services-grid
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/card-grid"
+                    columns="3"
+                    gap="medium">
+                    <cardItems jcr:primaryType="nt:unstructured">
+                        <item0 jcr:primaryType="nt:unstructured" title="Blockchain Application Development" description="Secure decentralized applications."/>
+                        <item1 jcr:primaryType="nt:unstructured" title="Mobile Application Development" description="iOS and Android mobile solutions."/>
+                        <item2 jcr:primaryType="nt:unstructured" title="Cloud-native Applications Development" description="Scalable cloud-first applications."/>
+                        <item3 jcr:primaryType="nt:unstructured" title="Enterprise Application Development" description="Robust enterprise-grade systems."/>
+                        <item4 jcr:primaryType="nt:unstructured" title="Enterprise Application Integration" description="Seamless system integration."/>
+                        <item5 jcr:primaryType="nt:unstructured" title="Robotic Process Automation" description="Intelligent automation solutions."/>
+                    </cardItems>
+                </services-grid>
+                <partners-heading
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/section-heading"
+                    title="Partners"
+                    headingLevel="h2"
+                    alignment="center"/>
+                <partners
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/logo-gallery">
+                    <logos jcr:primaryType="nt:unstructured">
+                        <item0 jcr:primaryType="nt:unstructured" imagePath="/content/dam/setia/logos/partners/parceria_aws.png" altText="Amazon Web Services" width="120px"/>
+                        <item1 jcr:primaryType="nt:unstructured" imagePath="/content/dam/setia/logos/partners/parceria_neo.png" altText="Neo4j" width="100px"/>
+                        <item2 jcr:primaryType="nt:unstructured" imagePath="/content/dam/setia/logos/partners/parceria_ibm.png" altText="IBM" width="100px"/>
+                        <item3 jcr:primaryType="nt:unstructured" imagePath="/content/dam/setia/logos/partners/parceria_its.png" altText="ITS" width="120px"/>
+                    </logos>
+                </partners>
+            </container>
+            <cta-section
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/cta-section"
+                title="Ready to tackle your next challenge?"
+                subtitle="Setia can help you build value through innovation."
+                buttonText="Get in touch"
+                buttonLink="mailto:connect@setia.com.br"
+                includeMascot="true"
+                mascotImage="/content/dam/setia/logos/brand/contact_area.png"
+                mascotAlt="Setia mascot"/>
+        </root>
+    </jcr:content>
+</jcr:root>

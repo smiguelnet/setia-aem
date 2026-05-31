@@ -1,0 +1,16 @@
+<!--/* Rich Text Section (see docs/04 §7) */-->
+<div class="rich-text-section" data-sly-test="${properties.text || properties.title}">
+    <h3 class="rich-text-section__title" data-sly-test="${properties.title}">${properties.title}</h3>
+    <div class="rich-text-section__content" data-sly-test="${properties.text}">
+        ${properties.text @ context='html'}
+    </div>
+    <ul class="rich-text-section__list"
+        data-sly-test="${properties.includeList && resource.listItems}"
+        data-sly-list.item="${resource.listItems.children}">
+        <li>${item.valueMap.text}</li>
+    </ul>
+</div>
+
+<sly data-sly-test="${!(properties.text || properties.title)}">
+    <div class="cq-placeholder" data-emptytext="${'Rich Text Section' @ i18n}"></div>
+</sly>

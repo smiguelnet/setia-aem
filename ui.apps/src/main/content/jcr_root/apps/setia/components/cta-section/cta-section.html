@@ -1,0 +1,24 @@
+<!--/* CTA Section (see docs/04 §13) */-->
+<sly data-sly-test.hasContent="${properties.title || wcmmode.edit}"/>
+
+<section class="cta-section ${currentStyle.cssClasses}" data-sly-test="${properties.title}">
+    <div class="cta-section__container">
+        <div class="cta-section__content">
+            <h2 class="cta-section__title">${properties.title}</h2>
+            <p class="cta-section__subtitle" data-sly-test="${properties.subtitle}">${properties.subtitle}</p>
+            <a class="cta-section__button button button--primary"
+               href="${properties.buttonLink || '#'}"
+               data-sly-test="${properties.buttonText || properties.buttonLink}">
+                ${properties.buttonText || 'Get in touch'}
+            </a>
+        </div>
+        <div class="cta-section__mascot"
+             data-sly-test="${properties.includeMascot && properties.mascotImage}">
+            <img src="${properties.mascotImage}" alt="${properties.mascotAlt}"/>
+        </div>
+    </div>
+</section>
+
+<sly data-sly-test="${!properties.title}">
+    <div class="cq-placeholder" data-emptytext="${'CTA Section' @ i18n}"></div>
+</sly>

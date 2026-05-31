@@ -1,18 +1,115 @@
+//== Setia Design System — tokens (see docs/07-design-system.md)
 
-//== Font
+//== Brand Colors
+$color-primary-dark-blue:  #10245a;   // Headers, footers, hero/banner backgrounds
+$color-primary-green:      #7ED321;   // Cards, CTAs, accents
+$color-primary-light-blue: #4A90E2;   // Links, secondary accents
 
-$font-family:           "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-size:             16px;
-$font-height:           1.5;
+//== Neutral Colors
+$color-white:            #FFFFFF;
+$color-light-gray:       #F5F5F5;      // Alternate backgrounds
+$color-medium-gray:      #E0E0E0;      // Borders, dividers
+$color-dark-gray:        #333333;      // Body text
+$color-text:             #333333;      // Body copy
+$color-text-secondary:   #666666;      // Captions, muted text
+$color-background:       #FFFFFF;       // Page background
+$color-background-alt:   #F5F5F5;       // Alternate sections
+$color-border:           #E0E0E0;       // Borders, dividers
 
-//== Color
+//== Legacy aliases (kept so archetype partials keep compiling)
+$color-foreground:       $color-dark-gray;
+$color-link:             $color-primary-light-blue;
+$color-foreground-dark:  #FFFFFF;
+$color-background-dark:  #10245a;
+$color-link-dark:        #7ED321;
 
-// Normal mode
-$color-foreground:      #202020;
-$color-background:      #ECECEC;
-$color-link:            #2020E0;
+//== Typography
+$font-family-base:    'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-mono:    'Courier New', Courier, monospace;
+// Legacy aliases
+$font-family:         $font-family-base;
+$font-height:         1.6;
 
-// Dark mode
-$color-foreground-dark: invert($color-foreground);
-$color-background-dark: invert($color-background);
-$color-link-dark:       invert($color-link);
+$font-size-base:   16px;
+$font-size:        16px;   // legacy alias
+$font-size-large:  18px;
+$font-size-small:  14px;
+$font-size-xsmall: 12px;
+
+// Heading sizes (desktop)
+$font-size-h1: 48px;
+$font-size-h2: 36px;
+$font-size-h3: 28px;
+$font-size-h4: 22px;
+$font-size-h5: 18px;
+$font-size-h6: 16px;
+
+// Heading sizes (mobile)
+$font-size-h1-mobile: 32px;
+$font-size-h2-mobile: 28px;
+$font-size-h3-mobile: 24px;
+$font-size-h4-mobile: 20px;
+
+// Font weights
+$font-weight-light:    300;
+$font-weight-normal:   400;
+$font-weight-medium:   500;
+$font-weight-semibold: 600;
+$font-weight-bold:     700;
+
+// Line heights
+$line-height-base:    1.6;
+$line-height-tight:   1.2;
+$line-height-normal:  1.5;
+$line-height-relaxed: 1.75;
+
+//== Spacing (8px base unit)
+$spacing-unit: 8px;
+$spacing-0:   0;
+$spacing-xs:  8px;
+$spacing-sm:  16px;
+$spacing-md:  24px;
+$spacing-lg:  32px;
+$spacing-xl:  48px;
+$spacing-xxl: 64px;
+$spacing-xxxl: 96px;
+
+//== Breakpoints
+$breakpoint-mobile:  576px;
+$breakpoint-tablet:  768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide:    1440px;
+
+//== Layout
+$container-max-width: 1200px;
+$container-padding:   24px;
+$grid-gutter:         24px;
+
+//== Shadows / elevation
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+$shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.2);
+
+//== Border radius
+$border-radius-sm:    4px;
+$border-radius-md:    8px;
+$border-radius-lg:    16px;
+$border-radius-round: 50%;
+
+//== Transitions
+$transition-fast:   0.15s;
+$transition-normal: 0.3s;
+$transition-slow:   0.5s;
+$transition-easing: ease-in-out;
+
+//== Z-index scale
+$z-index-base:           1;
+$z-index-dropdown:       100;
+$z-index-sticky:         500;
+$z-index-fixed:          1000;
+$z-index-modal-backdrop: 1500;
+$z-index-modal:          2000;
+$z-index-popover:        2500;
+$z-index-tooltip:        3000;

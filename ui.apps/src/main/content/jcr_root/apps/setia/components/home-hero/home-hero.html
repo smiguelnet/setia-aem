@@ -1,0 +1,29 @@
+<!--/* Home Hero (see docs/04 §4) — all data via the Sling Model */-->
+<sly data-sly-use.model="br.com.setia.core.models.HomeHeroModel"/>
+<sly data-sly-use.bgFmt="${'background-image: url({0});' @ format=[model.backgroundImage]}"/>
+
+<section class="home-hero" data-sly-test="${model.mainTitle}"
+         style="${model.backgroundImage ? bgFmt : '' @ context='styleString'}">
+    <div class="home-hero__inner">
+        <div class="home-hero__content">
+            <h1 class="home-hero__title">${model.mainTitle}</h1>
+            <p class="home-hero__subtitle" data-sly-test="${model.subtitle}">${model.subtitle}</p>
+        </div>
+    </div>
+    <div class="home-hero__cards" data-sly-test="${model.serviceCards.size > 0}">
+        <sly data-sly-list.card="${model.serviceCards}">
+            <div class="home-hero__card">
+                <div class="home-hero__card-icon" data-sly-test="${card.icon}">
+                    <img src="${card.icon}" alt="${card.title}"/>
+                </div>
+                <h3 class="home-hero__card-title">${card.title}</h3>
+                <p class="home-hero__card-desc" data-sly-test="${card.description}">${card.description}</p>
+                <a class="home-hero__card-link" href="${card.linkUrl}" data-sly-test="${card.linkUrl}">${card.linkText}</a>
+            </div>
+        </sly>
+    </div>
+</section>
+
+<sly data-sly-test="${!model.mainTitle}">
+    <div class="cq-placeholder" data-emptytext="${'Home Hero' @ i18n}"></div>
+</sly>

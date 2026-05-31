@@ -1,0 +1,21 @@
+//== Section Heading
+
+.section-heading {
+    @include container;
+    margin-bottom: $spacing-xl;
+
+    &__title {
+        margin-bottom: $spacing-sm;
+        color: $color-primary-dark-blue;
+    }
+
+    &__subtitle {
+        font-size: $font-size-large;
+        color: $color-text-secondary;
+        margin: 0;
+    }
+
+    &--center { text-align: center; }
+    &--left   { text-align: left; }
+    &--right  { text-align: right; }
+}
