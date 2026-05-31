@@ -2,8 +2,8 @@
 
 .rich-text-section {
     @include container;
-    margin-top: $spacing-lg;
-    margin-bottom: $spacing-lg;
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-lg;
 
     &__title {
         color: $color-primary-dark-blue;
@@ -25,6 +25,8 @@
             margin: 0 0 $spacing-sm;
             padding-left: $spacing-md;
         }
+
+        strong { font-weight: $font-weight-semibold; }
     }
 
     &__list {
@@ -47,6 +49,27 @@
                 border-radius: $border-radius-round;
                 background-color: $color-primary-green;
             }
+        }
+    }
+}
+
+// The "Engagement / Gamification" section has a full-width light background
+// Applied when the AEM container wraps this rich-text with an alternate bg
+.rich-text-section--engagement,
+section.rich-text-section + .rich-text-section {
+    background-color: $color-background-alt;
+    padding-top: $spacing-xl;
+    padding-bottom: $spacing-xl;
+    width: 100%;
+    max-width: 100%;
+
+    .rich-text-section__title {
+        font-size: $font-size-h2;
+
+        // "Engagement." part in bold dark blue, rest in green italic
+        em, strong {
+            color: $color-primary-green;
+            font-style: italic;
         }
     }
 }

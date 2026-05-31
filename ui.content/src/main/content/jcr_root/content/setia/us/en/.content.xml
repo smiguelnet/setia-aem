@@ -71,12 +71,13 @@
                         <item5 jcr:primaryType="nt:unstructured" title="Robotic Process Automation Implementation" description="Intelligent process automation to reduce costs and boost efficiency."/>
                     </cardItems>
                 </services-grid>
-                <engagement
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="setia/components/rich-text-section"
-                    title="Engagement. Gamification as a key element"
-                    text="&lt;p>Gamification connects smaller tasks to larger goals with Gamification. It is a game or a business strategy used between different players. See our works, understand our vision to go beyond what others have done to your the best possible performance, keeping people fully beyond their goal.&lt;/p>"/>
             </container>
+            <!-- Engagement section: full-width alt background, outside main container -->
+            <engagement
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="setia/components/rich-text-section"
+                title="Engagement. Gamification as a key element"
+                text="&lt;p>Gamification connects smaller tasks to larger goals with Gamification. It is a game or a business strategy used between different players. See our works, understand our vision to go beyond what others have done to your the best possible performance, keeping people fully beyond their goal.&lt;/p>"/>
             <cta-section
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="setia/components/cta-section"

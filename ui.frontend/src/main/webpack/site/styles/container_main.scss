@@ -1,6 +1,26 @@
+//== Page-level layout: root container and engagement section
 
-//== Container main content style, used on page template
+// Remove archetype default padding
+.cmp-container {
+    padding: 0;
+    margin: 0;
+}
 
-main.container {
-    padding: .5em 1em;
+// The Engagement rich-text-section sits directly inside root (not in the inner container).
+// Give it a full-width yellow-green background to match the reference.
+// AEM renders the component as a direct child div of the page root container.
+.root > .cmp-container > .rich-text-section {
+    background-color: $color-background-alt;
+    width: 100%;
+
+    .rich-text-section__title {
+        font-size: $font-size-h2;
+        color: $color-primary-dark-blue;
+    }
+}
+
+// "Ready to tackle your next challenge?" section heading
+// sits between card grid and CTA in the reference — give it a clean white bg
+.root > .cmp-container section-heading {
+    background-color: $color-white;
 }

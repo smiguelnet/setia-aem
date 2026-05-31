@@ -1,16 +1,20 @@
-
-//== XF Footer style, used on page template
+//== Footer Experience Fragment — Setia dark footer
 
 footer.experiencefragment {
-    padding: .5em 1em;
-    border-top: 1px solid $color-foreground;
+    background-color: $color-primary-dark-blue;
+    color: $color-white;
 
-    @media (prefers-color-scheme: dark) {
-        border-color: $color-foreground-dark;
+    .cmp-container {
+        @include container;
     }
 
-    .cmp-separator__horizontal-rule {
-        margin: 0;
-        border: 0;
+    // Copyright text
+    .cmp-text {
+        text-align: center;
+        padding: $spacing-sm 0;
+        font-size: $font-size-small;
+        color: rgba($color-white, 0.7);
+
+        p { margin: 0; }
     }
 }

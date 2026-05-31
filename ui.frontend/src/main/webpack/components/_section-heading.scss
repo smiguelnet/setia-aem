@@ -2,10 +2,31 @@
 
 .section-heading {
     @include container;
-    margin-bottom: $spacing-xl;
+    padding-top: $spacing-xl;
+    padding-bottom: $spacing-md;
+
+    // Short blue accent bar above the heading (matches reference screenshot)
+    &::before {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 3px;
+        background-color: $color-primary-dark-blue;
+        margin-bottom: $spacing-sm;
+    }
+
+    &--center {
+        text-align: center;
+        &::before { margin-left: auto; margin-right: auto; }
+    }
+    &--left   { text-align: left; }
+    &--right  {
+        text-align: right;
+        &::before { margin-left: auto; }
+    }
 
     &__title {
-        margin-bottom: $spacing-sm;
+        margin: 0 0 $spacing-xs;
         color: $color-primary-dark-blue;
     }
 
@@ -13,9 +34,6 @@
         font-size: $font-size-large;
         color: $color-text-secondary;
         margin: 0;
+        line-height: $line-height-normal;
     }
-
-    &--center { text-align: center; }
-    &--left   { text-align: left; }
-    &--right  { text-align: right; }
 }

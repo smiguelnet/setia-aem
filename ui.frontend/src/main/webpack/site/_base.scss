@@ -10,16 +10,24 @@ body {
     background: $color-background;
 }
 
+// Offset the fixed 64px header on every page
+body {
+    padding-top: 64px;
+}
+
+// In AEM author editor mode the header is inside an iframe — skip the offset
+.we-Editor body,
+.is-author body {
+    padding-top: 0;
+}
+
 a {
     color: $color-primary-light-blue;
     @include transition(color);
 
-    &:hover {
-        color: darken($color-primary-light-blue, 10%);
-    }
+    &:hover { color: darken($color-primary-light-blue, 10%); }
 }
 
-// Visible focus indicator for accessibility
 :focus-visible {
     outline: 2px solid $color-primary-light-blue;
     outline-offset: 2px;
