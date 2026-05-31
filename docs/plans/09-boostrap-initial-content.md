@@ -99,14 +99,22 @@ The task should create/update:
 - `/conf/setia/...` — only if template/policy changes are needed
 - `ui.content/src/main/content/META-INF/vault/filter.xml` — filters covering the exported content (see filter-mode guidance in [01 §6.5](./01-implementation-plan.md#65-vault-filter-modes-uicontentfilterxml))
 
-### Expected Output - Screenshots
+### Expected Output
 
+#### Screenshots
 Screenshots live in [`docs/images/`](../images/) (not `docs/assets/`):
 
 - **Home:** [../images/website_home.png](../images/website_home.png)
 - **Company:** [../images/website_company.png](../images/website_company.png)
 - **Services:** [../images/website_services.png](../images/website_services.png)
 - **Solutions:** [../images/website_solutions.png](../images/website_solutions.png)
+
+#### HTML layout
+Important: Just to use as a reference
+- **Home:** [../html/website_home.html](../html/website_home.html)
+- **Company:** [../html/website_company.html](../html/website_company.html)
+- **Services:** [../html/website_services.html](../html/website_services.html)
+- **Solutions:** [../html/website_solutions.html](../html/website_solutions.html)
 
 ## Validation
 
