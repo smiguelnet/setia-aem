@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/setia/clientlibs"/>
+    <filter root="/apps/setia/components"/>
+    <filter root="/apps/setia/i18n"/>
+</workspaceFilter>

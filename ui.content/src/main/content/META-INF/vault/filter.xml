@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/setia" mode="merge"/>
+    <filter root="/content/setia" mode="merge"/>
+    <filter root="/content/dam/setia" mode="merge">
+        <exclude pattern="/content/dam/setia(/.*)?"/>
+        <include pattern="/content/dam/setia/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/setia/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/setia" mode="merge"/>
+</workspaceFilter>
