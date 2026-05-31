@@ -722,7 +722,7 @@ JS: ui.frontend/src/main/webpack/components/accordion-section.js
    - rich-text-section ("What makes Setia different?")
    - download-list (company documents)
    - card-grid (6 service cards)
-   - logo-gallery (partner logos: AWS, Neo4j, SAP, ITS)
+   - logo-gallery (partner logos: AWS, Neo4j, IBM, ITS — files `parceria_aws.png`, `parceria_neo.png`, `parceria_ibm.png`, `parceria_its.png`)
    - cta-section
 
 3. Upload assets to DAM:

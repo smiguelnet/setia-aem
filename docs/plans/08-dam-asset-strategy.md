@@ -11,67 +11,99 @@ This document defines the Digital Asset Management (DAM) strategy for organizing
 - Efficient asset workflow
 - Version control and governance
 
+> **Source of truth:** the real assets ship in [`docs/assets/`](../assets/) (`images/`, `pdf/`, `favicon/`). The folder structure and filenames below reflect **those actual files** mapped into the DAM, not idealized placeholders. When bootstrapping (see [09 — Bootstrap Initial Content](./09-boostrap-initial-content.md)), copy from `docs/assets/` into `/content/dam/setia/` and keep the original filenames so references stay stable.
+
+---
+
+## Source Assets → DAM Mapping
+
+The assets are delivered in `docs/assets/`. The table maps each source file to its DAM destination and the component(s) that consume it.
+
+| Source (`docs/assets/`) | DAM destination | Used by |
+|---|---|---|
+| `images/logo_white.png` | `logos/brand/logo_white.png` | Header XF (logo on dark bg) |
+| `images/logo.png`, `sologo-maior.png` | `logos/brand/` | Alt logo / favicon source |
+| `images/contact_area.png` | `logos/brand/contact_area.png` | **Mascot** — CTA section + Footer XF "Get in touch" |
+| `images/bg-home.jpg` | `images/hero-backgrounds/bg-home.jpg` | `home-hero` background |
+| `images/bg-content.jpg` | `images/banners/bg-content.jpg` | `page-banner` background (inner pages) |
+| `images/FundoAmarelo.jpg` | `images/backgrounds/FundoAmarelo.jpg` | Section background ("What we do" / Engagement) |
+| `images/components.png` | `images/content-images/components.png` | Services "and how…" icon row |
+| `images/strategy.jpg` | `images/diagrams/strategy.jpg` | Services `image-section` ("Component-driven Acceleration") |
+| `images/digital-assets.jpg` | `images/diagrams/digital-assets.jpg` | Solutions `image-section` ("Digital Assets Management Platform") |
+| `images/blockchain-icon.jpg` | `icons/services/blockchain-icon.jpg` | Service card icon |
+| `images/team.png`, `clientes.jpg`, `tools.png`, `mpsbr.jpg` | `images/content-images/` | Company "Business Experience" / supporting imagery |
+| `images/partners/parceria_aws.png` | `logos/partners/parceria_aws.png` | `logo-gallery` (AWS) |
+| `images/partners/parceria_neo.png` | `logos/partners/parceria_neo.png` | `logo-gallery` (Neo4j) |
+| `images/partners/parceria_ibm.png` | `logos/partners/parceria_ibm.png` | `logo-gallery` (IBM) |
+| `images/partners/parceria_its.png` | `logos/partners/parceria_its.png` | `logo-gallery` (ITS) |
+| `images/partners/parceria_microsoft.png` | `logos/partners/parceria_microsoft.png` | `logo-gallery` (Microsoft — available, not in current screenshots) |
+| `images/team_certifications/{logo_ibm,logo_oracle,logo_redhat,parceria_microsoft}.png` | `logos/certifications/` | Company "Business Experience" cert row |
+| `pdf/setia-institucional.pdf` | `documents/presentations/setia-institucional.pdf` | `download-list` — Company Presentation |
+| `pdf/metodo-trabalho-setia.pdf` | `documents/presentations/metodo-trabalho-setia.pdf` | `download-list` — Work Method / Technical Presentation |
+| `pdf/{setia-gamification,setia-integracao,setia-rpa,setia-webreports,setia-webstore,singular}.pdf` | `documents/presentations/` | `download-list` — additional brochures |
+| `favicon/*`, `images/site.webmanifest`, `images/safari-pinned-tab.svg` | served at site root via page head | Favicon / PWA manifest (see [Favicon & PWA Assets](#favicon-and-pwa-assets)) |
+
+> ⚠️ **Partners are AWS, Neo4j, IBM, ITS** (with Microsoft also available). Earlier doc revisions listed "SAP" — **there is no SAP asset** and SAP does not appear in the website screenshots. Do not reference SAP.
+
 ---
 
 ## DAM Folder Structure
 
-### Complete Hierarchy
+### Target Hierarchy (populated from `docs/assets/`)
 
 ```
 /content/dam/setia/
 ├── images/
-│   ├── hero-backgrounds/           # Hero section background images
-│   │   ├── blockchain-hero.jpg
-│   │   ├── home-hero.jpg
-│   │   └── tech-pattern-overlay.svg
-│   ├── banners/                    # Page banner backgrounds
-│   │   ├── company-banner.jpg
-│   │   ├── services-banner.jpg
-│   │   └── solutions-banner.jpg
-│   ├── content-images/             # General content images
-│   │   ├── team-collaboration.jpg
-│   │   ├── office-workspace.jpg
-│   │   └── client-meeting.jpg
-│   └── diagrams/                   # Technical diagrams, infographics
-│       ├── platform-architecture.svg
-│       ├── strategy-diagram.svg
-│       └── component-flow.svg
+│   ├── hero-backgrounds/
+│   │   └── bg-home.jpg              # home-hero background
+│   ├── banners/
+│   │   └── bg-content.jpg           # inner page-banner background
+│   ├── backgrounds/
+│   │   └── FundoAmarelo.jpg         # yellow/green halftone section bg
+│   ├── content-images/
+│   │   ├── components.png           # "and how..." icon row
+│   │   ├── team.png
+│   │   ├── clientes.jpg
+│   │   ├── tools.png
+│   │   └── mpsbr.jpg
+│   └── diagrams/
+│       ├── strategy.jpg             # Services strategy diagram
+│       └── digital-assets.jpg       # Solutions platform diagram
 ├── icons/
-│   ├── services/                   # Service card icons
-│   │   ├── blockchain-icon.svg
-│   │   ├── cloud-icon.svg
-│   │   ├── digital-transformation-icon.svg
-│   │   ├── embedded-systems-icon.svg
-│   │   ├── industry-40-icon.svg
-│   │   └── web3-icon.svg
-│   └── ui/                         # UI icons (arrows, chevrons, etc.)
-│       ├── arrow-right.svg
-│       ├── checkmark.svg
-│       ├── download.svg
-│       └── expand-icon.svg
+│   └── services/
+│       └── blockchain-icon.jpg      # (additional service icons as sourced)
 ├── logos/
-│   ├── brand/                      # Setia brand assets
-│   │   ├── setia-logo-white.svg
-│   │   ├── setia-logo-dark.svg
-│   │   ├── setia-logo-icon.svg
-│   │   └── mascot-character.png
-│   └── partners/                   # Partner/technology logos
-│       ├── aws-logo.svg
-│       ├── neo4j-logo.svg
-│       ├── sap-logo.svg
-│       └── its-logo.svg
+│   ├── brand/
+│   │   ├── logo_white.png           # header logo (white, on dark bg)
+│   │   ├── logo.png
+│   │   ├── sologo-maior.png
+│   │   └── contact_area.png         # mascot (CTA + footer)
+│   ├── partners/
+│   │   ├── parceria_aws.png
+│   │   ├── parceria_neo.png         # Neo4j
+│   │   ├── parceria_ibm.png
+│   │   ├── parceria_its.png
+│   │   └── parceria_microsoft.png   # available; not in current screenshots
+│   └── certifications/
+│       ├── logo_ibm.png
+│       ├── logo_oracle.png
+│       ├── logo_redhat.png
+│       └── parceria_microsoft.png
 ├── documents/
-│   ├── presentations/              # Company/technical presentations
-│   │   ├── company-overview-2026.pdf
-│   │   ├── technical-capabilities-v2.pdf
-│   │   └── services-portfolio.pdf
-│   └── whitepapers/                # Marketing documents, case studies
-│       ├── blockchain-security-whitepaper.pdf
-│       ├── digital-transformation-guide.pdf
-│       └── industry-40-case-study.pdf
-└── videos/                         # Future: promotional videos
+│   └── presentations/
+│       ├── setia-institucional.pdf      # Company Presentation
+│       ├── metodo-trabalho-setia.pdf    # Work Method
+│       ├── setia-gamification.pdf
+│       ├── setia-integracao.pdf
+│       ├── setia-rpa.pdf
+│       ├── setia-webreports.pdf
+│       ├── setia-webstore.pdf
+│       └── singular.pdf
+└── videos/                          # Future: promotional videos
     └── (placeholder for future content)
 ```
+
+> The source assets are mostly raster (`.jpg`/`.png`), not SVG. The "prefer SVG" guidance below remains the target for any **new** logos/icons/diagrams, but the delivered assets are bitmaps — optimize them (compress, correct dimensions) rather than assuming vector sources exist.
 
 ---
 
@@ -176,19 +208,26 @@ Examples:
 - **Resolution:** Vector (SVG) or 300 DPI (PNG)
 
 **Naming Convention:**
+
+New logos should follow `{organization}-logo.{ext}`. The **delivered** partner logos keep their original `parceria_*` names so existing references stay valid:
 ```
-{organization}-logo.svg
-Examples:
-- setia-logo-white.svg
-- setia-logo-dark.svg
-- aws-logo.svg
-- neo4j-logo.svg
+Delivered (keep as-is):
+- logo_white.png        (Setia, white — header)
+- contact_area.png      (mascot)
+- parceria_aws.png      (AWS)
+- parceria_neo.png      (Neo4j)
+- parceria_ibm.png      (IBM)
+- parceria_its.png      (ITS)
+- parceria_microsoft.png (Microsoft)
+
+Pattern for any NEW logo:
+- {organization}-logo.svg
 ```
 
 **Optimization:**
-- Use SVG for scalability
+- Prefer SVG for any new scalable logo; delivered partner logos are PNG with transparent backgrounds — keep them as-is unless a vector source becomes available
 - Remove unnecessary SVG code
-- Provide both light and dark versions of Setia logo
+- Provide both light and dark versions of the Setia logo (`logo_white.png` is the white/header variant)
 - Partner logos: ensure brand guidelines followed
 
 ---
@@ -631,47 +670,68 @@ setia-logo-2026.svg
 
 ## Asset Checklist by Component
 
+Assets in **bold** are the actual delivered files from `docs/assets/`.
+
 ### home-hero
 **Required assets:**
-- [ ] Hero background image (1920×1080, < 500KB)
-- [ ] 3 service icons (SVG, < 10KB each)
-- [ ] Optional: Tech pattern overlay (SVG)
+- [ ] Hero background — **`bg-home.jpg`**
+- [ ] Service card icons (e.g. **`blockchain-icon.jpg`**; source remaining icons as needed)
 
 ### page-banner
 **Required assets:**
-- [ ] Optional: Banner background image (1920×1080, < 500KB)
+- [ ] Banner background — **`bg-content.jpg`** (inner pages); optional per-page override
 
 ### card-grid
 **Required assets:**
-- [ ] Icon for each card (SVG, < 10KB)
-- [ ] Optional: Card background images
+- [ ] Icon for each card (source as needed; **`components.png`** illustrates the "build-block" set)
 
 ### image-section
 **Required assets:**
-- [ ] Content image or diagram (1200×800, < 300KB)
-- [ ] Alt text in metadata
+- [ ] Services: **`strategy.jpg`** ("Component-driven Acceleration") + alt text
+- [ ] Solutions: **`digital-assets.jpg`** ("Digital Assets Management Platform") + alt text
 
 ### logo-gallery
-**Required assets:**
-- [ ] Partner logos (SVG, transparent background)
+**Required assets (partners — AWS, Neo4j, IBM, ITS; Microsoft optional):**
+- [ ] **`parceria_aws.png`**, **`parceria_neo.png`**, **`parceria_ibm.png`**, **`parceria_its.png`**
 - [ ] Alt text for each logo
+- [ ] (Company "Business Experience") certifications: **`logo_ibm.png`**, **`logo_oracle.png`**, **`logo_redhat.png`**, **`parceria_microsoft.png`**
 
 ### download-list
-**Required assets:**
-- [ ] PDF documents (< 10MB)
-- [ ] File descriptions
+**Required assets (Company page brochures):**
+- [ ] **`setia-institucional.pdf`** (Company Presentation), **`metodo-trabalho-setia.pdf`** (Work Method)
+- [ ] Additional: **`setia-gamification.pdf`**, **`setia-integracao.pdf`**, **`setia-rpa.pdf`**, **`setia-webreports.pdf`**, **`setia-webstore.pdf`**, **`singular.pdf`**
+- [ ] File descriptions + sizes
 
 ### cta-section
 **Required assets:**
-- [ ] Mascot character image (PNG, transparent)
+- [ ] Mascot — **`contact_area.png`** (girl with laptop + headset, transparent PNG)
 
 ### Header XF
 **Required assets:**
-- [ ] Setia logo (SVG, white version)
+- [ ] Setia logo — **`logo_white.png`** (white, for dark background)
 
 ### Footer XF
 **Required assets:**
-- [ ] Mascot character image (PNG)
+- [ ] Mascot — **`contact_area.png`**
+
+---
+
+## Favicon and PWA Assets
+
+A complete favicon / PWA icon set ships in [`docs/assets/favicon/`](../assets/favicon/) plus [`docs/assets/images/site.webmanifest`](../assets/images/site.webmanifest) and `safari-pinned-tab.svg`.
+
+**Contents:**
+- `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `favicon-96x96.png`
+- `apple-icon-*.png` (57–180px) + `apple-icon-precomposed.png`
+- `android-icon-*.png` (36–192px) + `manifest.json`
+- `ms-icon-*.png` (70–310px) + `browserconfig.xml`
+- `safari-pinned-tab.svg` (mask icon)
+
+**Implementation:** these are head-level resources, not DAM content components. The cleanest options for AEM:
+1. Ship them as static files in a ClientLib's `resources/` folder and emit the `<link rel="icon">` / `<link rel="apple-touch-icon">` / `<meta name="msapplication-*">` tags from `customheaderlibs.html`, **or**
+2. Serve from the site root via Dispatcher rewrites (favicons are conventionally requested at `/favicon.ico`, `/apple-icon.png`, etc.).
+
+> The delivered `manifest.json` and `site.webmanifest` have placeholder `name`/icon paths — update `name`, `short_name`, `theme_color` (`#10245a` brand dark blue), and icon `src` paths to the deployed locations before launch.
 
 ---
 

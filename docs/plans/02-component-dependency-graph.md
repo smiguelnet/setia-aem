@@ -307,7 +307,7 @@ This document visualizes the dependencies between components, templates, and Exp
    ├─→ rich-text-section
    └─→ cta-section
 
-   Path: /content/setia/us/en/home
+   Path: /content/setia/us/en   (the locale root IS the home page; no separate /home node)
 
 
 ● Company Page

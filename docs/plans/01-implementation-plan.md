@@ -152,13 +152,13 @@ This document outlines the complete implementation plan for the Setia corporate 
 - [x] Add "Get in touch" Title (h2)
 - [x] Add contact information (`<a href="mailto:connect@setia.com.br">`)
 - [x] Add copyright text (`Copyright© Setia Technology 2005-2026. All rights reserved.`)
-- [ ] Add mascot image (deferred — design system shows it; not committed yet)
+- [ ] Add mascot image — asset is **available** at `docs/assets/images/contact_area.png` (girl with laptop + headset); bootstrap it to `/content/dam/setia/logos/brand/contact_area.png` and reference it. (Not yet wired in source.)
 - [ ] **🔴 Wire the footer XF into both template structures** — currently neither `landing-page/structure/.content.xml` nor `page-content/structure/.content.xml` contains an `experiencefragment-footer` node referencing `/content/experience-fragments/setia/us/en/site/footer/master`. The header is wired in `page-content` and in the `page` template-type seed, but the footer is wired nowhere. Pages will render without a footer until this is fixed.
 - [ ] **🔴 Wire the header XF into `landing-page/structure`** — the landing-page template's structure is currently an empty editable root container. The header XF reference exists only in `page-content` and the `page` template-type seed.
 
 **Frontend Tasks:**
 - [x] Style footer layout (dark blue background, centered content, container max-width)
-- [ ] Position mascot character (pending mascot asset)
+- [ ] Position mascot character (asset available: `contact_area.png`)
 - [x] Style contact section (Get in touch h2/h3 responsive, contact link with hover)
 - [x] Implement responsive layout
 
@@ -168,7 +168,7 @@ This document outlines the complete implementation plan for the Setia corporate 
 
 **Success Criteria:**
 - [ ] Footer displays on all pages *(blocked: not wired into templates)*
-- [ ] Mascot image positioned correctly *(blocked: asset not committed)*
+- [ ] Mascot image positioned correctly *(asset available — `contact_area.png`; needs wiring into the XF)*
 - ✅ Responsive on all devices
 
 #### 2.3 Experience Fragment Reference Component
@@ -649,7 +649,7 @@ Vault filter `mode=` controls how a package interacts with existing JCR state on
 |------|------|-----|
 | `/conf/setia` | replace | Templates and policies are source-of-truth code. Without `replace`, template-structure refactors (e.g. locking `home-hero` and `cta-section` into the structure tree) silently fail to apply because vault-merge keeps the old empty `<root editable=true>` alongside the new locked nodes. Symptom: locked components render as empty placeholders. |
 | `/content/setia` | replace | Pages are bootstrapped from source. Without `replace`, archetype-default content (Hello World, Epic Journey teasers, "Drag components here" empty parsys, San Jose footer) survives alongside the new content and renders confusingly. |
-| `/content/dam/setia/{images,logos,mascots,documents}` | merge | DAM binaries are heavy. Merge mode avoids re-uploading the same `original` rendition every deploy. The `asset.jpg` archetype sample is also explicitly merged. |
+| `/content/dam/setia/{images,icons,logos,documents}` | merge | DAM binaries are heavy (mascot lives under `logos/brand/`, not a separate `mascots/` folder). Merge mode avoids re-uploading the same `original` rendition every deploy. The `asset.jpg` archetype sample is also explicitly merged. |
 | `/content/experience-fragments/setia` | replace | Same reasoning as `/content/setia`. |
 
 **Why this matters:** if the team sees stale content rendering after a deploy (component nodes with no `sling:resourceType`, mascot missing, hero collapsed, etc.), 9 times out of 10 the fix is **not** "redeploy" — it's "verify filter mode". Vault merge silently swallowing structural changes is one of the most frequent confusing failure modes in AEM source-controlled projects.

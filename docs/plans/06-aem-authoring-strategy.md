@@ -253,8 +253,9 @@ Edit XF → Save → Publish XF → Clear cache → Changes appear on all pages
 │   ├── services/            (Service card icons)
 │   └── ui/                  (UI icons, arrows, etc.)
 ├── logos/
-│   ├── partners/            (Partner logos: AWS, Neo4j, SAP, ITS)
-│   └── brand/               (Setia logo, mascot)
+│   ├── partners/            (Partner logos: AWS, Neo4j, IBM, ITS; Microsoft optional)
+│   ├── certifications/      (Cert logos: IBM, Oracle, Red Hat, Microsoft)
+│   └── brand/               (Setia logo `logo_white.png`, mascot `contact_area.png`)
 └── documents/
     ├── presentations/       (Company/technical PDFs)
     └── whitepapers/         (Marketing documents)
