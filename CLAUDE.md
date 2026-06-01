@@ -199,3 +199,18 @@ Both render via `setia/components/xfpage` and use the `xf-web-variation` templat
 | DAM | `http://localhost:4502/assets.html/content/dam/setia` |
 | Experience Fragments | `http://localhost:4502/aem/experience-fragments.html/content/experience-fragments/setia` |
 | Rebuild ClientLibs | `http://localhost:4502/libs/granite/ui/content/dumplibs.rebuild.html` |
+
+---
+
+## Implementation Plans (docs/plans/)
+
+| File | Purpose |
+|------|---------|
+| 01-implementation-plan.md | Master plan: phases, component list, filter modes (§6.5), XF blockers (§2.2) |
+| 02-component-dependency-graph.md | Build order dependencies between components |
+| 03-recommended-build-order.md | Sequenced task list for development |
+| 05-technical-risks.md | Known risks and mitigations (R14 = empty grids) |
+| 06-aem-authoring-strategy.md | Dialog patterns, policy config, author UX |
+| 07-responsive-strategy.md | Breakpoints, validation checklist |
+| 08-dam-asset-strategy.md | Full source→DAM path mapping, favicon/PWA |
+| 09-bootstrap-initial-content.md | Page content spec + acceptance criteria for initial deploy |
