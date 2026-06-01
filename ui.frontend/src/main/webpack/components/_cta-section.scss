@@ -20,7 +20,9 @@
         @include respond-to(tablet) {
             flex-direction: row;
             justify-content: space-between;
+            align-items: flex-end;
             text-align: left;
+            gap: $spacing-xl;
         }
     }
 
@@ -34,29 +36,29 @@
     }
 
     &__subtitle {
-        color: $color-white;
+        color: rgba($color-white, 0.85);
         margin-bottom: $spacing-md;
+        font-size: $font-size-large;
     }
 
     &__button {
-        width: 100%;
-        max-width: 300px;
-
-        @include respond-to(tablet) {
-            width: auto;
-        }
+        display: inline-block;
+        width: auto;
+        min-width: 160px;
     }
 
     &__mascot {
-        display: none;
+        display: none;  // hidden on narrow mobile
 
-        @include respond-to(mobile) {
+        @include respond-to(tablet) {
             display: block;
+            flex-shrink: 0;
         }
 
         img {
-            max-width: 180px;
+            max-width: 200px;
             height: auto;
+            display: block;
         }
     }
 

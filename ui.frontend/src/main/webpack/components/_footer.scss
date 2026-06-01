@@ -1,0 +1,60 @@
+//== Footer component styles
+//   Scoped overrides applied when cta-section + text appear inside the footer XF.
+
+// The footer's cta-section is centered (unlike page CTAs which are left-aligned on desktop)
+footer.experiencefragment {
+    .cta-section {
+        background-color: transparent; // footer bg handles the dark-blue
+        padding-top: $spacing-xl;
+        padding-bottom: 0;
+
+        &__container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            @include respond-to(tablet) {
+                // Still center the text content; mascot floats right
+                justify-content: center;
+                gap: $spacing-xxl;
+            }
+        }
+
+        &__title {
+            @include heading-responsive($font-size-h2, $font-size-h2-mobile);
+        }
+
+        // Email link styled as subtitle
+        &__subtitle {
+            font-size: $font-size-large;
+            margin-bottom: $spacing-sm;
+
+            a {
+                color: $color-white;
+                text-decoration: none;
+                border-bottom: 1px solid rgba($color-white, 0.4);
+                @include transition(border-color);
+
+                &:hover { border-bottom-color: $color-white; color: $color-white; }
+            }
+        }
+
+        // Hide the button inside the footer (redundant with the email link)
+        &__button { display: none; }
+
+        // Mascot: always show in footer (it's a key brand element)
+        &__mascot {
+            display: block;
+            margin-top: $spacing-md;
+
+            @include respond-to(tablet) {
+                margin-top: 0;
+            }
+
+            img {
+                max-width: 160px;
+                height: auto;
+            }
+        }
+    }
+}

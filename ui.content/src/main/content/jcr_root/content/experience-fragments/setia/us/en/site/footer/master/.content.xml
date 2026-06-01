@@ -18,11 +18,11 @@
                 sling:resourceType="setia/components/cta-section"
                 title="Get in touch"
                 subtitle="connect@setia.com.br"
-                buttonText="Contact us"
+                buttonText=""
                 buttonLink="mailto:connect@setia.com.br"
                 includeMascot="true"
                 mascotImage="/content/dam/setia/logos/brand/contact_area.png"
-                mascotAlt="Setia mascot — girl with laptop"/>
+                mascotAlt="Setia mascot — customer service representative"/>
             <copyright
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="setia/components/text"
