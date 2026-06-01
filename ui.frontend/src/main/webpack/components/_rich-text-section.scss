@@ -2,17 +2,40 @@
 
 .rich-text-section {
     @include container;
-    padding-top: $spacing-lg;
-    padding-bottom: $spacing-lg;
+    padding-top: $spacing-xl;
+    padding-bottom: $spacing-xl;
 
+    // Green hr line before title — matches reference pattern
     &__title {
+        position: relative;
         color: $color-primary-dark-blue;
-        margin-bottom: $spacing-md;
+        @include heading-responsive($font-size-h2, $font-size-h2-mobile);
+        margin: 0 0 $spacing-sm;
+        padding-top: $spacing-md + 3px; // space for the green line
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: $color-primary-green;
+        }
+    }
+
+    &__subtitle {
+        font-size: $font-size-large;
+        color: $color-text-secondary;
+        margin: 0 0 $spacing-md;
+        display: block;
     }
 
     &__content {
         color: $color-text;
         line-height: $line-height-base;
+        margin-top: $spacing-md;
 
         p { margin: 0 0 $spacing-sm; }
 
@@ -27,6 +50,19 @@
         }
 
         strong { font-weight: $font-weight-semibold; }
+
+        // Checkmark list items (used in "What makes Setia different")
+        dl {
+            dt {
+                font-weight: $font-weight-semibold;
+                color: $color-primary-dark-blue;
+                margin-top: $spacing-sm;
+            }
+            dd {
+                margin-left: $spacing-md;
+                color: $color-text-secondary;
+            }
+        }
     }
 
     &__list {
@@ -53,23 +89,8 @@
     }
 }
 
-// The "Engagement / Gamification" section has a full-width light background
-// Applied when the AEM container wraps this rich-text with an alternate bg
-.rich-text-section--engagement,
-section.rich-text-section + .rich-text-section {
-    background-color: $color-background-alt;
-    padding-top: $spacing-xl;
-    padding-bottom: $spacing-xl;
-    width: 100%;
+// bg-green: break out of container max-width and add background
+.rich-text-section.bg-green {
+    background-color: #f0f8e8;
     max-width: 100%;
-
-    .rich-text-section__title {
-        font-size: $font-size-h2;
-
-        // "Engagement." part in bold dark blue, rest in green italic
-        em, strong {
-            color: $color-primary-green;
-            font-style: italic;
-        }
-    }
 }

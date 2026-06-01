@@ -1,8 +1,9 @@
 <!--/* Card Grid (see docs/04 §8) — all data via the Sling Model */-->
 <sly data-sly-use.model="br.com.setia.core.models.CardGridModel"/>
 <sly data-sly-test.hasCards="${model.cards.size > 0}"/>
+<sly data-sly-test.extraClass="${properties.cssClass || ''}"/>
 
-<div class="card-grid ${currentStyle.cssClasses} ${model.gridClass} card-grid--gap-${model.gap}"
+<div class="card-grid ${currentStyle.cssClasses} ${model.gridClass} card-grid--gap-${model.gap} ${extraClass}"
      data-sly-test="${hasCards}">
     <div class="card-grid__container">
         <sly data-sly-list.card="${model.cards}">

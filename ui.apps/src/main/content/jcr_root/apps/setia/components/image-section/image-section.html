@@ -1,8 +1,7 @@
 <!--/* Image Section — text + image/diagram (see docs/04 §9) */-->
-<sly data-sly-test.position="${properties.imagePosition || 'right'}"/>
-<sly data-sly-use.widthFmt="${'--image-width: {0};' @ format=[properties.imageWidth || '50%']}"/>
+<sly data-sly-test.extraClass="${properties.cssClass || ''}"/>
 
-<section class="image-section image-section--image-${position}"
+<section class="image-section ${extraClass}"
          data-sly-test="${properties.imagePath || properties.title}">
     <div class="image-section__content">
         <h2 class="image-section__title" data-sly-test="${properties.title}">${properties.title}</h2>
@@ -11,8 +10,7 @@
             ${properties.description @ context='html'}
         </div>
     </div>
-    <div class="image-section__image" style="${widthFmt @ context='styleString'}"
-         data-sly-test="${properties.imagePath}">
+    <div class="image-section__image" data-sly-test="${properties.imagePath}">
         <img src="${properties.imagePath}" alt="${properties.imageAlt}"/>
     </div>
 </section>

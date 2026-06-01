@@ -25,43 +25,59 @@
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/rich-text-section"
                     title="We are on top of today&apos;s leading technologies"
-                    text="&lt;p>Leverage Blockchain Outsourcing Services from Setia. Using quality-improved methodologies to work with issuing and managing digital assets in order to certify Authenticity, Quantity, Ownership and Age of Items.&lt;/p>"/>
+                    subtitle="Leverage Blockchain Outsourcing Services from Setia."
+                    text="&lt;p>Using cross-platform skills and quality-integrated methodologies to work with issuing and managing digital assets in order to certify: Authenticity, Quantity, Ownership, Value and Age of them.&lt;/p>"/>
                 <platform
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/image-section"
+                    cssClass="bg-green"
                     title="Digital Assets Management Platform"
                     subtitle="Business blocks as additional components to empower and accelerate your business"
                     imagePath="/content/dam/setia/images/diagrams/digital-assets.jpg"
-                    imageAlt="Digital Assets Management Platform architecture — S-API, S-Gateway, S-Notary, S-View layers"
+                    imageAlt="Digital Assets Management Platform — S-API, S-Gateway, S-Notary, S-View"
                     imagePosition="right"
-                    imageWidth="60%"/>
-                <features-heading
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="setia/components/section-heading"
-                    title="Platform Features"
-                    headingLevel="h2"
-                    alignment="center"/>
+                    imageWidth="100%"/>
                 <features
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/card-grid"
+                    cssClass="card-grid--theme-neutral"
                     columns="3"
                     gap="medium">
                     <cardItems jcr:primaryType="nt:unstructured">
-                        <item0 jcr:primaryType="nt:unstructured" title="Built-in Stellar" description="A leading platform built on Stellar Blockchain. Each asset is tokenized ensuring a single entry into the Marketplace."/>
-                        <item1 jcr:primaryType="nt:unstructured" title="Securitized Assets" description="Each asset can be investigated from any Stellar Network Explorer to assert its authenticity."/>
-                        <item2 jcr:primaryType="nt:unstructured" title="Marketplace and Digital Collections" description="For each asset customers can choose whether to keep it or put it in the Marketplace at a set price."/>
-                        <item3 jcr:primaryType="nt:unstructured" title="Rarity Factor" description="The rarity of each asset is defined by a counter and well defined set of rules. Customers can check the actual quantity on any Stellar explorer."/>
-                        <item4 jcr:primaryType="nt:unstructured" title="Concurrency Management" description="The platform implements channels to manage blockchain transactions assigning time in seconds."/>
-                        <item5 jcr:primaryType="nt:unstructured" title="Non-Fungible Tokens" description="The platform supports non-fungible token trading, making the assets similar to the Ethereum standard ERC-721 / ERC-1155."/>
+                        <item0 jcr:primaryType="nt:unstructured"
+                            title="Built on Stellar"
+                            description="A trading platform built on Stellar Blockchain. Each asset is issued using a crypto key and they are limited. The issuing key expires according to custom and well-defined rules."/>
+                        <item1 jcr:primaryType="nt:unstructured"
+                            title="Securitized Assets"
+                            description="Each asset can be investigated from any Stellar Network Explorer to asset authenticity, quantity, age and exchanges of ownerships, leaving the owners anonymous."/>
+                        <item2 jcr:primaryType="nt:unstructured"
+                            title="MarketPlace and Digital Collections"
+                            description="For each asset customers can choose whether to keep it or put it into the Marketplace at a set price. It becomes instantly available in the market."/>
+                        <item3 jcr:primaryType="nt:unstructured"
+                            title="Rarity Factor"
+                            description="The rarity of each asset is defined by a custom and well-defined set of rules. Customers can check the actual quantity on any Stellar explorer."/>
+                        <item4 jcr:primaryType="nt:unstructured"
+                            title="Concurrency Management"
+                            description="Our platform can support thousands of concurrent transactions. It implements channels to manage blockchain transactions assigning asses in seconds."/>
+                        <item5 jcr:primaryType="nt:unstructured"
+                            title="Non-Fungible-Tokens"
+                            description="Our platform support non-fungible-token trading, making the assets similar to the Ethereum standard ERC-721 / ERC-1155."/>
                     </cardItems>
                 </features>
+                <ready-section
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/section-heading"
+                    title="Ready to tackle your next challenge?"
+                    subtitle="Setia can help you build value through innovation."
+                    headingLevel="h2"
+                    alignment="left"/>
             </container>
             <cta-section
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="setia/components/cta-section"
-                title="Ready to tackle your next challenge?"
-                subtitle="Setia can help you build value through innovation."
-                buttonText="Get in touch"
+                title="Get in touch"
+                subtitle="connect@setia.com.br"
+                buttonText="Contact us"
                 buttonLink="mailto:connect@setia.com.br"
                 includeMascot="true"
                 mascotImage="/content/dam/setia/logos/brand/contact_area.png"

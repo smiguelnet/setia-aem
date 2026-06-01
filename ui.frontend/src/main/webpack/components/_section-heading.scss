@@ -1,33 +1,35 @@
 //== Section Heading
 
 .section-heading {
-    @include container;
-    padding-top: $spacing-xl;
-    padding-bottom: $spacing-md;
+    padding: $spacing-xl $spacing-sm $spacing-xl;
+    max-width: $container-max-width;
+    margin-left: auto;
+    margin-right: auto;
 
-    // Short blue accent bar above the heading (matches reference screenshot)
+    @include respond-to(tablet) { padding-left: $spacing-lg; padding-right: $spacing-lg; }
+    @include respond-to(desktop) { padding-left: $spacing-xl; padding-right: $spacing-xl; }
+
+    // Green hr line before heading — matches reference design
     &::before {
         content: "";
         display: block;
         width: 40px;
         height: 3px;
-        background-color: $color-primary-dark-blue;
-        margin-bottom: $spacing-sm;
+        background-color: $color-primary-green;
+        margin-bottom: $spacing-md;
     }
 
+    &--left   { text-align: left; }
+    &--right  { text-align: right; &::before { margin-left: auto; } }
     &--center {
         text-align: center;
         &::before { margin-left: auto; margin-right: auto; }
     }
-    &--left   { text-align: left; }
-    &--right  {
-        text-align: right;
-        &::before { margin-left: auto; }
-    }
 
     &__title {
-        margin: 0 0 $spacing-xs;
+        @include heading-responsive($font-size-h2, $font-size-h2-mobile);
         color: $color-primary-dark-blue;
+        margin: 0 0 $spacing-sm;
     }
 
     &__subtitle {
@@ -36,4 +38,15 @@
         margin: 0;
         line-height: $line-height-normal;
     }
+}
+
+// bg-green applied to section-heading — must break out of container constraint
+.section-heading.bg-green {
+    max-width: 100%;
+    background-color: #f0f8e8;
+    padding-left: $spacing-sm;
+    padding-right: $spacing-sm;
+
+    @include respond-to(tablet) { padding-left: $spacing-lg; padding-right: $spacing-lg; }
+    @include respond-to(desktop) { padding-left: $spacing-xl; padding-right: $spacing-xl; }
 }

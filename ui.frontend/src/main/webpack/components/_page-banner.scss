@@ -1,49 +1,45 @@
-//== Page Banner
+//== Page Banner — matches reference hero/banner pattern (left-aligned, green subtitle)
 
 .page-banner {
     background-color: $color-primary-dark-blue;
     background-size: cover;
     background-position: center;
     color: $color-white;
-    text-align: center;
-    padding: $spacing-xl $spacing-sm;
+    text-align: left;
+    padding: $spacing-xxl $spacing-sm;
 
     @include respond-to(tablet) {
-        padding: $spacing-xxl $spacing-lg;
+        padding: $spacing-xxl + $spacing-xl $spacing-lg;
     }
 
     &__container {
         @include container;
+        max-width: 66%; // reference uses uk-width-2-3@s
+    }
+
+    // Green hr line before title
+    &__container::before {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 3px;
+        background-color: $color-primary-green;
+        margin-bottom: $spacing-md;
     }
 
     &__title {
         color: $color-white;
-        margin-bottom: $spacing-sm;
-        @include heading-responsive($font-size-h2, $font-size-h2-mobile);
+        margin: 0 0 $spacing-xs;
+        @include heading-responsive($font-size-h1, $font-size-h1-mobile);
+        font-weight: $font-weight-bold;
     }
 
+    // Subtitle is green — matches .fg class in reference
     &__subtitle {
-        color: $color-white;
-        font-size: $font-size-base;
-        margin: 0;
-
-        @include respond-to(tablet) {
-            font-size: $font-size-large;
-        }
-    }
-
-    //== Theme variants (Style System, applied via currentStyle.cssClasses)
-    &--theme-light {
-        background-color: $color-light-gray;
-        color: $color-text;
-
-        .page-banner__title,
-        .page-banner__subtitle {
-            color: $color-primary-dark-blue;
-        }
-    }
-
-    &--theme-accent {
-        background-color: $color-primary-green;
+        color: $color-primary-green;
+        font-size: $font-size-large;
+        font-weight: $font-weight-semibold;
+        margin: $spacing-xs 0 0;
+        display: block;
     }
 }

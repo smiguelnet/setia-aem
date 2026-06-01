@@ -1,6 +1,9 @@
 <!--/* Rich Text Section (see docs/04 §7) */-->
-<div class="rich-text-section" data-sly-test="${properties.text || properties.title}">
+<sly data-sly-test.extraClass="${properties.cssClass || ''}"/>
+
+<div class="rich-text-section ${extraClass}" data-sly-test="${properties.text || properties.title || properties.subtitle}">
     <h3 class="rich-text-section__title" data-sly-test="${properties.title}">${properties.title}</h3>
+    <span class="rich-text-section__subtitle" data-sly-test="${properties.subtitle}">${properties.subtitle}</span>
     <div class="rich-text-section__content" data-sly-test="${properties.text}">
         ${properties.text @ context='html'}
     </div>
@@ -11,6 +14,6 @@
     </ul>
 </div>
 
-<sly data-sly-test="${!(properties.text || properties.title)}">
+<sly data-sly-test="${!(properties.text || properties.title || properties.subtitle)}">
     <div class="cq-placeholder" data-emptytext="${'Rich Text Section' @ i18n}"></div>
 </sly>

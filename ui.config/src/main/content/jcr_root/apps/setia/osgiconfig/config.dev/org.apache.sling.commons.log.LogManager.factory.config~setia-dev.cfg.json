@@ -1,0 +1,5 @@
+{
+  "org.apache.sling.commons.log.level": "DEBUG",
+  "org.apache.sling.commons.log.names": ["br.com.setia"],
+  "org.apache.sling.commons.log.file": "logs/error.log"
+}

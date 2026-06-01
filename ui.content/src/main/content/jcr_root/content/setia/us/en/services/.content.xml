@@ -14,7 +14,8 @@
             <page-banner
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="setia/components/page-banner"
-                title="We are a world-class Software Developer Company"
+                title="We are a world-class"
+                subtitle="Software Developer Company"
                 backgroundImage="/content/dam/setia/images/banners/bg-content.jpg"/>
             <container
                 jcr:primaryType="nt:unstructured"
@@ -24,26 +25,29 @@
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/rich-text-section"
                     title="Turn Opportunities Into Results using Technology"
-                    text="&lt;p>With a solid 21-year background in a practice that combines consulting, development and design at scale, Setia delivers innovative solutions across every industry.&lt;/p>"/>
+                    subtitle="With a solid 21 year background in a practice that combines consulting, development and design at scale"
+                    text=""/>
                 <what-we-do
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/section-heading"
+                    cssClass="bg-green"
                     title="What we do"
                     subtitle="Digital Products for Future-Ready Businesses"
                     headingLevel="h2"
-                    alignment="center"/>
+                    alignment="left"/>
                 <services-grid
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/card-grid"
+                    cssClass="bg-green"
                     columns="3"
                     gap="medium">
                     <cardItems jcr:primaryType="nt:unstructured">
-                        <item0 jcr:primaryType="nt:unstructured" title="Blockchain Application Development" description="Secure decentralized applications."/>
-                        <item1 jcr:primaryType="nt:unstructured" title="Mobile Application Development" description="iOS and Android mobile solutions."/>
-                        <item2 jcr:primaryType="nt:unstructured" title="Cloud-native Applications Development" description="Scalable cloud-first applications."/>
-                        <item3 jcr:primaryType="nt:unstructured" title="Enterprise Application Development" description="Robust enterprise-grade systems."/>
-                        <item4 jcr:primaryType="nt:unstructured" title="Enterprise Application Integration" description="Seamless system integration."/>
-                        <item5 jcr:primaryType="nt:unstructured" title="Robotic Process Automation Implementation" description="Intelligent process automation."/>
+                        <item0 jcr:primaryType="nt:unstructured" title="Blockchain Application Development"/>
+                        <item1 jcr:primaryType="nt:unstructured" title="Mobile Application Development"/>
+                        <item2 jcr:primaryType="nt:unstructured" title="Cloud-native Applications Development"/>
+                        <item3 jcr:primaryType="nt:unstructured" title="Enterprise Application Development"/>
+                        <item4 jcr:primaryType="nt:unstructured" title="Enterprise Application Integration"/>
+                        <item5 jcr:primaryType="nt:unstructured" title="Robotic Process Automation Implementation"/>
                     </cardItems>
                 </services-grid>
                 <how-components
@@ -52,50 +56,51 @@
                     title="and how..."
                     subtitle="Taking advantage of our business-blocks to speed up your product development"
                     imagePath="/content/dam/setia/images/content-images/components.png"
-                    imageAlt="Component icons: configure, secure API, blockchain API, code, plus equals product box"
+                    imageAlt="Component building blocks"
                     imagePosition="right"
-                    imageWidth="50%"/>
+                    imageWidth="100%"/>
                 <how-accordion
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/accordion-section">
                     <accordionItems jcr:primaryType="nt:unstructured">
                         <item0
                             jcr:primaryType="nt:unstructured"
-                            itemTitle="Blockchain Application Development"
-                            itemContent="&lt;p>We apply quality-improved methodologies to work with issuing and managing digital assets in order to certify Authenticity, Quantity, Ownership and Age of Items.&lt;/p>"
+                            itemTitle="1. Blockchain Application Development"
+                            itemContent="&lt;p>Using cross-platform skills and quality-integrated methodologies to work with issuing and managing digital assets in order to certify: Authenticity, Quantity, Ownership, Value and Age of them.&lt;/p>"
                             expandedByDefault="true"/>
                         <item1
                             jcr:primaryType="nt:unstructured"
-                            itemTitle="Enterprise Application Development and Integration"
-                            itemContent="&lt;p>Setia has standardized, defined and documented processes in their software development practice in order to deliver quality software and solutions.&lt;/p>"
+                            itemTitle="2. Enterprise Application Development and Integration"
+                            itemContent="&lt;p>We build innovative and intelligent web and mobile applications those create digital experiences tailored to your business. Seamless integration from a variety of applications working based on microservices approach.&lt;/p>"
                             expandedByDefault="false"/>
                         <item2
                             jcr:primaryType="nt:unstructured"
-                            itemTitle="Gamification Content and Solutions"
-                            itemContent="&lt;p>Connecting smaller tasks to larger goals using gamification techniques to promote desired behaviours among customers and employees.&lt;/p>"
+                            itemTitle="3. Gamification Strategy and Solutions"
+                            itemContent="&lt;p>Gamification informs, motivates and incites action with the player. It also has the power to change people&apos;s behavior.&lt;/p>"
                             expandedByDefault="false"/>
                         <item3
                             jcr:primaryType="nt:unstructured"
-                            itemTitle="Robotic Process Automation (RPA)"
-                            itemContent="&lt;p>Automate repetitive tasks and streamline business processes with intelligent robotic process automation solutions.&lt;/p>"
+                            itemTitle="5. Robotic Process Automation (RPA)"
+                            itemContent="&lt;p>Task automation technology applied across multiple applications and across multiple line of business.&lt;/p>"
                             expandedByDefault="false"/>
                     </accordionItems>
                 </how-accordion>
                 <strategy
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/image-section"
+                    cssClass="bg-green"
                     title="Our Strategy: Component-driven Acceleration"
                     subtitle="Business blocks as additional components to empower and accelerate your business"
                     imagePath="/content/dam/setia/images/diagrams/strategy.jpg"
                     imageAlt="Component-driven acceleration strategy diagram"
                     imagePosition="right"
-                    imageWidth="50%"/>
+                    imageWidth="100%"/>
                 <partners-heading
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/section-heading"
                     title="Partners"
                     headingLevel="h2"
-                    alignment="center"/>
+                    alignment="left"/>
                 <partners
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="setia/components/logo-gallery">
@@ -106,13 +111,20 @@
                         <item3 jcr:primaryType="nt:unstructured" imagePath="/content/dam/setia/logos/partners/parceria_its.png" altText="ITS" width="120px"/>
                     </logos>
                 </partners>
+                <ready-section
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="setia/components/section-heading"
+                    title="Ready to tackle your next challenge?"
+                    subtitle="Setia can help you build value through innovation."
+                    headingLevel="h2"
+                    alignment="left"/>
             </container>
             <cta-section
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="setia/components/cta-section"
-                title="Ready to tackle your next challenge?"
-                subtitle="Setia can help you build value through innovation."
-                buttonText="Get in touch"
+                title="Get in touch"
+                subtitle="connect@setia.com.br"
+                buttonText="Contact us"
                 buttonLink="mailto:connect@setia.com.br"
                 includeMascot="true"
                 mascotImage="/content/dam/setia/logos/brand/contact_area.png"

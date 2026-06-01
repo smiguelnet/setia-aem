@@ -1,57 +1,67 @@
 //== Image Section
 
 .image-section {
-    @include container;
-    @include section-spacing;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-md;
+    padding-top: $spacing-xl;
+    padding-bottom: $spacing-xl;
 
-    @include respond-to(tablet) {
-        flex-direction: row;
-        align-items: center;
-        gap: $spacing-xl;
+    &__content {
+        @include container;
+        margin-bottom: $spacing-md;
     }
 
-    &--image-left {
-        @include respond-to(tablet) {
-            flex-direction: row-reverse;
+    // Green hr line before title
+    &__title {
+        position: relative;
+        color: $color-primary-dark-blue;
+        @include heading-responsive($font-size-h2, $font-size-h2-mobile);
+        margin: 0 0 $spacing-xs;
+        padding-top: $spacing-md + 3px;
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: $color-primary-green;
         }
     }
 
-    &__content {
-        flex: 1;
-    }
-
-    &__title {
-        color: $color-primary-dark-blue;
-        margin-bottom: $spacing-sm;
-    }
-
+    // Green subtitle — matches .fg label in reference
     &__subtitle {
         font-size: $font-size-large;
         color: $color-text-secondary;
-        margin-bottom: $spacing-md;
+        margin: 0 0 $spacing-md;
+        display: block;
     }
 
     &__description {
         line-height: $line-height-base;
-
+        margin-top: $spacing-sm;
         p { margin: 0 0 $spacing-sm; }
     }
 
+    // Full-width centered image (default — matches strategy.jpg, digital-assets.jpg, components.png)
     &__image {
         width: 100%;
-
-        @include respond-to(tablet) {
-            width: var(--image-width, 50%);
-            flex: 0 0 var(--image-width, 50%);
-        }
+        text-align: center;
+        margin-top: $spacing-lg;
 
         img {
-            width: 100%;
+            max-width: 100%;
             height: auto;
-            border-radius: $border-radius-md;
+            border: 1px solid $color-border;  // .img-border in reference
+            border-radius: $border-radius-sm;
+            display: inline-block;
         }
+    }
+
+    // bg-green variant wrapper
+    &.bg-green {
+        background-color: #f0f8e8;
+        width: 100%;
+        max-width: 100%;
     }
 }

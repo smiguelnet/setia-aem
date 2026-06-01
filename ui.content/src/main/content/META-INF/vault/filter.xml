@@ -4,13 +4,20 @@
     <filter root="/conf/setia"/>
     <!-- Pages bootstrapped from source — replace mode wipes archetype placeholders -->
     <filter root="/content/setia"/>
-    <!-- DAM folder metadata only; binaries uploaded separately (merge avoids binary churn) -->
+
+    <!--
+        DAM strategy (see docs/plans/08-dam-asset-strategy.md):
+        - Folder .content.xml stubs deploy in merge mode to create the folder hierarchy
+        - Asset binaries are NOT version-controlled; they are uploaded separately
+        - merge mode ensures existing author-uploaded assets are never overwritten by a build
+    -->
     <filter root="/content/dam/setia" mode="merge">
-        <exclude pattern="/content/dam/setia(/.*)?"/>
-        <include pattern="/content/dam/setia/jcr:content(/.*)?"/>
+        <!-- Exclude binary renditions and original files -->
+        <exclude pattern="/content/dam/setia(/.*)?.original"/>
+        <exclude pattern="/content/dam/setia(/.*)?/renditions(/.*)?"/>
+        <include pattern="/content/dam/setia(/.*)?"/>
     </filter>
-    <!-- Keep archetype sample asset (merge to avoid binary churn) -->
-    <filter root="/content/dam/setia/asset.jpg" mode="merge"/>
+
     <!-- XFs are code-controlled — replace mode -->
     <filter root="/content/experience-fragments/setia"/>
 </workspaceFilter>

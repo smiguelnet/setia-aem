@@ -17,6 +17,37 @@ Make the local AEM pages visually match the current production website as closel
 
 > **Home page path:** the locale root `/content/setia/us/en` **is** the home page — there is no separate `/home` node. (Earlier revisions of this task said `/content/setia/us/en/home`, which does not exist.) Confirm against [01 — Implementation Plan §7.1](./01-implementation-plan.md#71-home-page).
 
+### HTML Layout Reference
+
+The HTML files in `docs/html/` are exported from the current production website and should be used only as layout/content references.
+
+- **Home:** [../html/website_home.html](../html/website_home.html)
+- **Company:** [../html/website_company.html](../html/website_company.html)
+- **Services:** [../html/website_services.html](../html/website_services.html)
+- **Solutions:** [../html/website_solutions.html](../html/website_solutions.html)
+
+They should help identify:
+
+- Section order
+- Text content
+- Card content
+- Navigation labels and links
+- Image references
+- Repeated layout patterns
+- CSS class naming inspiration
+
+They must not be copied directly as static HTML into AEM.
+
+The implementation must still use:
+
+- AEM components
+- HTL templates
+- Sling Models when needed
+- Author dialogs
+- ClientLibs
+- DAM-managed assets
+- Editable Templates
+
 ## Source Assets
 
 All assets ship in [`docs/assets/`](../assets/) (paths below are relative to the repo root). Copy them into the DAM and keep the original filenames. The full source→DAM→component mapping lives in [08 — DAM Asset Strategy](./08-dam-asset-strategy.md#source-assets--dam-mapping).
